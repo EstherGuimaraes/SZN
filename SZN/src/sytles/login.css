@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.body{
+    background-color: #121214;
+    font-family: 'GlacialIndifferenceRegular', sans-serif;
+}
+.logo{
+    height: 350px;
+    margin-top: -80px; 
+}
+
+div{
+    display: flex;
+    justify-content: center;
+}
