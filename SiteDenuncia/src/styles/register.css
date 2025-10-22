@@ -12,12 +12,12 @@
     --accent: #1e3a8a;
     --muted: #87909f;
     --input-bg:#f3f4f6; 
-    --imput-border: #000000;
+    --imput-border: rgba(15,23,42,0.06);
     --radius: 6px;
     --gap: 16px;
 }
 
-body {
+body{
     background-color: var(--bg);
     height: 100vh;
     display: flex;
@@ -25,62 +25,40 @@ body {
     justify-content: center;
 }
 
-.container {
+.container{
     width: 100%;
     max-width: 1200px;
     padding: 20px;
 }
 
-.login-box {
+.register-box{
     background-color: var(--card-bg);
     border-radius: 10px;
     padding: 32px;
-    max-width: 450px;
+    max-width: 520px;
     margin: 0 auto;
-    box-shadow: 0 6px 18px rgba(2,6,23,0.25);
+    box-shadow: 0 6px 18px rgba(2,6,23,0.18);
 }
 
-.logo {
-    display: block;
-    margin: 0 auto 20px auto;
-    width: 100px;
-    border-radius: 50%;
+.return-link {
+    color: #87909f;
+    margin-bottom: 10%;
+    margin-top: 20px;
 }
 
-h2 {
+.return-link a {
+    color: #87909f;
+    text-decoration: none;
+}
+
+.return-link a:hover {
+    text-decoration: underline;
+}
+
+h2{
     text-align: center;
-    margin-bottom: 0%;
-    color: #0f172a;  
-}
-
-.texto-login {
-    color: var(--muted);  
-    text-align: center;
-    margin: 15px 0;
-    font-size: 18px;
-}
-
-.google-login {
-    width: 100%;
-    border: 1px solid #00000050;
-    background-color: #f9fafb;
-    color: #000;
-    font-weight: 500;
-    padding: 10px 0;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.2s;
-    margin-bottom: 18px;
-}
-
-.google-login:hover {
-    background-color: #f3f4f6;
-    box-shadow: 0 3px 10px #0000000d;
-}
-
-.google-icon {
-    width: 20px;
-    height: 20px;
+    margin-bottom: 10%;
+    color: var(--primary);
 }
 
 .input-icon {
@@ -101,17 +79,54 @@ h2 {
 .input-icon input {
     width: 100%;
     padding: 12px 12px 12px 44px;
-    border: 1px solid #00000040;
+    border: 1px solid var(--accent);
     border-radius: 8px;
-    background-color: #f9fafb;
+    background-color: #fff;
     font-size: 15px;
-    color: #0f172a;
+    color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.1);
+    transition: all 0.2s ease-in-out;
 }
 
-.input-icon input {
-    border-color: #1e3a8a;
+.input-icon input:focus {
     box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.2);
+    outline: none;
+}
+
+.input-icon input.invalido,
+.input-icon select.invalido {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.1);
+}
+
+.input-icon select {
+    width: 100%;
+    padding: 12px 12px 12px 44px;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
     background-color: #fff;
+    font-size: 15px;
+    color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.1);
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%230f172a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+.input-icon select:focus {
+    box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.2);
+    outline: none;
+}
+
+.mensagem-erro {
+    color: #dc2626;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-left: 44px;
 }
 
 .input-icon input:focus + .icon-input,
@@ -177,53 +192,22 @@ h2 {
     padding-left: 44px;
 }
 
-.login-button {
+.register-button{
     width: 100%;
     padding: 12px;
     background-color: var(--primary);
-    color: white;
+    color: #ffffff;
     border: none;
     border-radius: var(--radius);
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.2s, box-shadow 0.12s;
+    transition: background-color 0.2s;
 }
 
-.login-button:hover {
-    background-color: #1e3a8a;
-}
-
-.register-link {
-    color: #87909f;
-    margin-top: 20px;
-}
-
-.register-link a {
-    color: #87909f;
-    text-decoration: none;
-}
-
-.register-link a:hover {
-    text-decoration: underline;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border-radius: var(--radius);
-}
-
-input:focus, .google-login:focus, .login-button:focus {
-    outline: 2px solid #1e3a8a1f;
-    box-shadow: 0 0 0 3px #1e3a8a0f;
+.register-button:hover{
+    background-color: var(--accent);
 }
 
 @media (max-width: 480px){
-    .login-box{
-        padding: 20px;
-        margin: 12px;
-    }
-    .logo{ width: 120px }
+    .register-box{ padding: 20px; margin: 12px; }
 }
