@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo{
+    height: 350px;
+    margin-top: -80px; 
+}
+
+.szn{
+    display: flex;
+    justify-content: center;
+}
+
+.botao-barra{
+    border: none;
+    background-color: transparent;
+    margin-top: -3000px;
+}
+
+.barra:hover{
+    cursor: pointer;
+}
+
+
+.barraImg {
+    width: 80px;
+}
+
+.icones{
+    width: 30px;
+    margin-left:100px;
+}
