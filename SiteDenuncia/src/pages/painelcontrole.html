@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/painelcontrole.css">
+    <title>Painel de Controle</title>
+
+</head>
+<body>
+  
+    <div id="menuLateral" class="menuLateral">
+        <div class="menuHeader">
+            <img id="imgEscudo" src="/SiteDenuncia/src/assets/4.png" alt="">
+            <div class="menuTitle">
+                <h2 id="titulosite">Sistema Policial</h2>
+                <p>Gerenciamento de Denúncias</p>
+            </div>
+        </div>
+        <hr class="menuLinha">    
+    
+        
+        <a href="#">Painel de Controle</a>
+        <a href="#">Denúncias</a>
+    
+    </div>
+
+ 
+   
+
+    <main id="mainPainel" class="mainPainel">
+        
+        <h1 id="titulo">Painel de Controle</h1>
+        <h3 id="subtitulo">Visão geral do sistema de denúncias</h3>
+        
+        
+        <div id="cards" class="cards">
+            <div id="card" class="card">
+               <h2 id="tituloDen">Denúncias Novas</h2>
+               <img id="imgDoc" src="" alt="">
+                <h1 id="qtd">1</h1>
+                <h3 id="">Aguardando análise</h3>
+
+            </div>
+
+            <div id="card" class="card">
+                <h2 id="tituloAna">Em Análise</h2>
+                <img id="imgRel" src="" alt="">
+                <h1 id="qtd">1</h1>
+                <h3 id="">Sendo avaliadas</h3>
+
+            </div>
+
+            <div id="card" class="card">
+                <h2 id="tituloInvest">Investigando</h2>
+                <img id="imgSeta" src="" alt="">
+                <h1 id="qtd">1</h1>
+                <h3 id="">Em andamento</h3>
+
+            </div>
+
+            <div id="card" class="card">
+                <h2 id="tituloResol">Resolvidas</h2>
+                <img id="imgCheck" src="" alt="">
+                <h1 id="qtd">1</h1>
+                <h3 id="">Casos finalizados</h3>
+
+            </div>
+    </div>
+    
+    <div id="atencao" class="atencao">
+        <img id="imgAlerta" src="" alt="">
+        <h2 id="tituloAten">Atenção: 3 denúncia(s) urgente(s)</h2><br>
+        <h3 id="AtenDescricao">Requer ação imediata</h3>
+    </div>
+
+     <div id="caixaDen" class="caixaDen">
+        <h1>Denúncias Recentes</h1>
+        <div id="denuncia" class="denuncia">
+            <div class="denunciaHeader">
+                <h2 id="tituloDenuncia">Denúncia 1</h2>
+                <button id="status" class="status">Resolvida</button>
+            </div>
+            <h3 id="descricaoDenuncia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque nam earum distinctio illo, sapiente iure quae nostrum aspernatur! Quia molestiae praesentium facere at eligendi vitae, quasi ipsam nostrum amet illum?</h3>
+            <span id="dataDenuncia">Data: 01/01/2024</span>
+            <span id="localDenuncia">Local:</span>
+            <span id="tipoCrime">Crime:</span>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
