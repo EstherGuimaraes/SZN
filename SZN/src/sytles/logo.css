@@ -1,44 +1,50 @@
-body{
+body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    
+    overflow-x: hidden;
+
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.logo{
-    height: 350px;
-    margin-top: -80px; 
+header {
+    display: flex;
+    justify-content: space-around;
 }
 
-.szn{
+.logo {
+    height: 350px;
+    margin-top: -80px;
+}
+
+.szn {
     display: flex;
     justify-content: center;
+    margin-left: 25%;
 }
 
-.botao-barra{
+.botao-barra {
     border: none;
     background-color: transparent;
-    margin-top: -3000px;
 }
 
-.barra:hover{
+.barra:hover {
     cursor: pointer;
 }
-
 
 .barraImg {
     width: 80px;
 }
 
-.icones{
+.icone {
+    display: flex;
+    justify-content: left;
     width: 30px;
-    margin-left:100px;
+    margin-top: -5%;
+    margin-right: 70px;
 }
