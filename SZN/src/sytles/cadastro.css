@@ -13,7 +13,6 @@ body {
   height: 100vh;
 }
 
-
 .cadastro-container {
   text-align: center;
   width: 100%;
@@ -21,12 +20,10 @@ body {
   padding: 30px 30px;
 }
 
-
 .logo {
   width: 300px;
   margin-bottom: 22px;
 }
-
 
 h1 {
   font-size: 30px;
@@ -35,7 +32,6 @@ h1 {
   margin-bottom: 40px;
 }
 
-/* input de email e senha */
 .input {
   width: 100%;
   max-width: 100%;
@@ -53,6 +49,22 @@ h1 {
 }
 
 
+select.input {
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+  appearance: none; 
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23b7b7b7%22%20d%3D%22M287%20166.9c-4.1%204.1-9.2%204.9-13.4%201.2L152.1%2050.2%2019.2%20169.5c-4.2%203.7-9.3%202.9-13.4-1.2-4.1-4.1-4.9-9.2-1.2-13.4L138.8%2029.5c1.8-1.8%204.1-2.9%206.5-2.9s4.7%201.1%206.5%202.9l133.5%20126.9c3.7%204.2%202.9%209.3-1.2%2013.4z%22%2F%3E%3Cpath%20fill%3D%22%23b7b7b7%22%20d%3D%22M152.1%20263c-2.4%200-4.7-1.1-6.5-2.9L12.1%20133.2c-3.7-4.2-2.9-9.3%201.2-13.4%204.1-4.1%209.2-4.9%2013.4-1.2L152.1%20242.2l133.5-126.9c4.2-3.7%209.3-2.9%2013.4%201.2%204.1%204.1%204.9%209.2%201.2%2013.4L158.6%20260.1c-1.8%201.8-4.1%202.9-6.5%202.9z%22%2F%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 14px;
+  padding-right: 40px; 
+  color: #b7b7b7; 
+}
+
+select.input:not([value=""]) {
+  color: #bdb4b2;
+}
+
 .botao {
   width: 100%;
   padding: 15px;
@@ -69,4 +81,3 @@ h1 {
 .botao:hover {
   background-color: #b1a8a6;
 }
-
