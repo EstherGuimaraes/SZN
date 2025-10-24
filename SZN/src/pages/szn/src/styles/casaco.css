@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Times New Roman', serif;
+  background-color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  text-align: center;
+  flex: 1;
+}
+
+.logo h1 {
+  font-size: 40px;
+  letter-spacing: 2px;
+}
+
+.logo p {
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+
+.logo hr {
+  width: 240px;
+  margin: 10px auto 0 auto;
+  border: none;
+  border-bottom: 2px solid #d9d9d9;
+}
+
+.icons {
+  display: flex;
+  gap: 25px;
+  font-size: 20px;
+  color: #333;
+}
+
+.icons i {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.icons i:hover {
+  color: #000;
+  transform: scale(1.1);
+}
+
+
+.produtos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px;
+  margin-top: 0%;
+}
+
+.produto {
+  border: 2px solid #000000; 
+  padding: 2px;
+  max-width: 220px;
+  text-align: center;
+  transition: 0.3s;
+  background-color: white;
+
+  display: flex;
+  align-items: center; /* centraliza horizontalmente */
+}
+
+.produto img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.text {
+  margin-top: 6px;
+  width: 100%;
+  text-align: center; /* ajusta para ficar abaixo da imagem e centralizado */
+  padding: 6px 8px;
+}
+
+.text h3 {
+  font-size: 13px;
+  color: #000;
+  margin-bottom: 3px;
+}
+
+.text p {
+  font-size: 12px;
+  color: #b4a9a9; /* cinza claro igual à imagem */
+}
+
+.produto:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px #000000;
+}
