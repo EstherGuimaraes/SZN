@@ -13,55 +13,96 @@ body {
 }
 
 .sidebar {
-  width: 240px;
-  background-color: #ffffff;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+    width: 20%;
+    background-color: #fafafa;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 8px;
+    align-items: center;
+    gap: 18px;
+    padding: 18px;
+    margin-left: 10px;
+
 }
 
 .logo-icon {
+    display: block;
+    width: 20%;
+    height: auto;
+    margin-top: 3%;
+    border-radius: 15px;
+}
+
+.menuTitle {
     display: flex;
-    margin: 0 auto;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
+    flex-direction: column;
+    justify-content: center;
+    width: 62%;
+    margin-top: 2%;
+
+}
+
+.lineMenu {
+    border: none;
+    height: 1px;
+    width: 100%;
+    background: #000000;
+    margin: 12px auto;
+    margin-bottom: 20px;
 }
 
 .sidebar h2 {
-  font-size: 16px;
-  color: #000000;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #020617;
 }
 
 .sidebar h4 {
-  font-size: 14px;
-  color: #94a3b8;
-  margin-bottom: 10px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #555;
 }
 
 .sidebar p {
-  font-size: 12px;
-  color: #000000;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    text-align: center;
+    color: #a6a6a6;
+    padding: 15px 20px;
 }
 
 .sidebar nav {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    color: #a6a6a6;
+    padding: 15px 20px;
 }
 
 .sidebar a {
-  color: #cbd5e1;
-  text-decoration: none;
-  transition: color 0.2s;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    color: #a6a6a6;
+    padding: 15px 20px;
+    transition: background-color 0.3s;
 }
 
 .sidebar a:hover,
@@ -72,6 +113,7 @@ body {
 .content {
   flex: 1;
   padding: 30px;
+  margin-left: 21%;
 }
 
 header {
