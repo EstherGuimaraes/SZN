@@ -23,21 +23,22 @@ body{
     justify-content: center;
 }
 
-.carrosel{
-    margin: 0 auto;
-    width: 800px;
-    height: 400px;
-    overflow: hidden ;
+.botao-barra{
+    border: none;
+    background-color: transparent;
+    margin-top: -3000px;
 }
 
-.slides{
-    width: 400px;
-    height: 400px;
-    display: flex;
-}
-
-.slides input{
-    display: none;
+.barra:hover{
+    cursor: pointer;
 }
 
 
+.barraImg {
+    width: 80px;
+}
+
+.icones{
+    width: 30px;
+    margin-left:100px;
+}
