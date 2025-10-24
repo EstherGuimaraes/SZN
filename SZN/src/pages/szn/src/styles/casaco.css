@@ -77,7 +77,6 @@ body {
 .produto  {
   border: 2px solid #000000; 
   padding: 2px;
-  width: %;
   text-align: center;
   transition: 0.3s;
   background-color: white;
