@@ -13,12 +13,19 @@
 <body>
   
     <div id="menuLateral" class="menuLateral">
-        <img id="imgEscudo" src="" alt="">
-        <h2 id="titulosite">Sistema Policial</h2>
-        <p>Gerenciamento de Denúncias</p>
+
+        
+
+
+        <div class="menuHeader">
+           <img id="imgEscudo" class="imgEscudo" src="/SiteDenuncia/src/assets/4.png" alt="">
+            <div class="menuTitle">
+                <h2 id="titulosite">Sistema Policial</h2>
+                <p>Gerenciamento de Denúncias</p>
+            </div>
+        </div>
         <hr class="menuLinha">    
-
-
+    
         
         <a href="#">Painel de Controle</a>
         <a href="#">Denúncias</a>
@@ -31,50 +38,71 @@
     <main id="mainPainel" class="mainPainel">
         
         <h1 id="titulo">Denúncias</h1>
-        <h3 id="subtitulo">Visão geral do sistema de denúncias</h3>
+        <h3 class="subtitulo" id="subtitulo">Visão geral do sistema de denúncias</h3>
         
         
-            <div id="categorias" class="categorias">
-                <fieldset>
+             <div id="categorias" class="categorias">
+                <div class="campo buscar">
                     <label for="buscar">Buscar Denúncia:</label>
                     <input id="buscar" class="buscar" type="text">
-                </fieldset>
+                </div>
 
-                <fieldset>
+                <div id="campo" class="campo">
                     <label for="status">Status:</label>
                     <select name="status" id="status">
+                        <option value="todos">Todos</option>
+                        <option value="nova">Nova</option>
+                        <option value="emAnalise">Em Análise</option>  
+                        <option value="investigando">Investigando</option>
                         <option value="resolvida">Resolvida</option>
-                        <option value="pendente">Pendente</option>
+                        <option value="arquivada">Arquivada</option>
+                         
                     </select>
-                </fieldset>
+                </div>
 
-                <fieldset>
+                <div id="campo" class="campo">
                     <label for="tipoCrime">Tipo de Crime:</label>
                     <select name="tipoCrime" id="tipoCrime">
-                    <option value="furto">Furto</option>
-                    <option value="assalto">Assalto</option>
-                    <option value="vandalismo">Vandalismo</option>
-                </fieldset>
+                        <option value="todos">Todos</option>
+                        <option value="furto">Furto</option>
+                        <option value="assalto">Assalto</option>
+                        <option value="vandalismo">Vandalismo</option>
+                    </select>
+                </div>
 
-                <fieldset>
+                <div id="campo" class="campo">
+                    <label for="prioridade">Prioridade</label>
+                    <select name="status" id="status">
+                        <option value="todos">Todos</option>
+                        <option value="urgente">Urgente</option>
+                        <option value="alta">Alta</option>
+                        <option value="media">Média</option>
+                        <option value="baixa">Baixa</option>
+                    </select>
+                </div>
 
-                </fieldset>
+                
+
+                <button id="limparFiltros" class="limparFiltros">
+                    <h3>Limpar Filtros</h3>
+                </button>
 
             </div>
 
-     <div id="caixaDen" class="caixaDen">
-        <h1>Denúncias Recentes</h1>
-        <div id="denuncia" class="denuncia">
-            <div class="denunciaHeader">
-                <h2 id="tituloDenuncia">Denúncia 1</h2>
-                <button id="status" class="status">Resolvida</button>
+
+            <div id="caixaDen" class="caixaDen">
+                <a href="detalhesDenuncia.html" id="denuncia" class="denuncia">
+                    <div class="denunciaHeader">
+                        <img class="imgDen" id="imgDen" src="/SiteDenuncia/src/assets/14.png" alt="">
+                        <h2 id="tituloDenuncia" class="tituloDenuncia">Nome da pessoa - xxxxx</h2>
+                        <button id="status" class="status">Resolvida</button>
+                    </div>
+                    <h3 id="descricaoDenuncia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque nam earum distinctio illo, sapiente iure quae nostrum aspernatur! Quia molestiae praesentium facere at eligendi vitae, quasi ipsam nostrum amet illum?</h3>
+                    <span id="dataDenuncia">Data:  01/01/2024</span><br>
+                    <span id="localDenuncia">Local:  São Paulo</span><br>
+                    <span id="tipoCrime">Crime:  Agressão</span>
+                </a>
             </div>
-            <h3 id="descricaoDenuncia">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque nam earum distinctio illo, sapiente iure quae nostrum aspernatur! Quia molestiae praesentium facere at eligendi vitae, quasi ipsam nostrum amet illum?</h3>
-            <span id="dataDenuncia">Data: 01/01/2024</span>
-            <span id="localDenuncia">Local:</span>
-            <span id="tipoCrime">Crime:</span>
-        </div>
-    </div>
 </main>
 
 </body>

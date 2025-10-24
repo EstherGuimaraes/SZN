@@ -2,18 +2,12 @@ body{
     background-color: #020617;
 }
 
-.menuLateral img {
-    display: flex;
-    margin: 0 auto;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
+
+
 
 .menuLateral {
     width: 20%;
-    background-color: #fafafa;
+    background-color: hsl(0, 0%, 98%);
     height: 100vh;
     position: fixed;
     top: 0;
@@ -21,6 +15,33 @@ body{
     display: flex;
     flex-direction: column;
     padding-top: 20px;
+}
+
+.menuHeader {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 8px;
+    align-items: center;
+    gap: 18px;
+    padding: 18px;
+    margin-left: 10px;
+
+}
+
+.imgEscudo {
+    display: block;
+    width: 20%;
+    height: auto;
+    margin-top: 3%;
+    border-radius: 15px;
+}
+
+.menuTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 62%;
+    margin-top: 2%;
 
 }
 
@@ -33,6 +54,7 @@ body{
     color: #020617;
 }
 
+
 .menuLateral p {
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
@@ -44,10 +66,11 @@ body{
 
 .menuLinha {
     border: none;
-    height: 2px;
+    height: 1px;
     width: 100%;
     background: #000000;
     margin: 12px auto;
+    margin-bottom: 20px;
 }
 
 .menuLateral a {
@@ -77,10 +100,10 @@ body{
     margin-bottom: 10px;
 }
 
-#subtitulo {    
+.subtitulo {    
     font-family: "Open Sans", sans-serif;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 4%;
     color: #87909f;
 }
 
@@ -90,8 +113,16 @@ body{
     margin-top: 20px;
 }
 
-.cards h2, h3 {
-    color: #87909f ;
+.cards h2{
+    color: #87909f;
+    font-size: 22px;
+}
+
+.cards h3{
+    color: #87909f;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 1%;
 }
 
 .card {
@@ -99,19 +130,40 @@ body{
     padding: 2%;
     border-radius: 20px;
     flex: 1;
-    width: 10%;
+    width: 58%;
     border: 1px solid #3d475a;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: center;
+}
 
+.card h2,
+.card h1,
+.card h3 {
+
+    text-align: left;
 }
 
 .card h1 {
     font-family: "Open Sans", sans-serif;
-    font-size: 379%;
+    font-size: 3rem; /* ajuste conforme desejar */
     margin: 0;
-    margin-top: -11%;
-    margin-bottom: 10px;
     color: #fff;
 }
+
+.imgStatus {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    width: 82px;
+    height: auto;
+    margin-top: -81%;
+    border-radius: 15px;
+    justify-self: end;
+    align-self: center;
+    object-fit: contain;
+}
+
 .atencao {
     background-color: #1b0b18;
     padding: 20px;
@@ -119,13 +171,24 @@ body{
     border: 1px solid #e71919;
     margin-top: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start; 
+    flex-direction: row;
+    align-items: center;
     
+}
+
+.imgAlerta {
+    width: 3%;
+    height: auto;
+    margin-left: 1%;
+}
+
+.infoAtencao {
+    margin-left: -111%;
 }
 
 .atencao #tituloAten {
     color: #f8716d;
+    margin-bottom: -3%;
 }
 
 .atencao #AtenDescricao {
@@ -144,20 +207,24 @@ body{
 }
 
 .denuncia {
-    background-color: #1e293b;
-    padding: 2%;
-    border-radius: 8px;
-    margin-bottom: 15px;
+    display: block;             
+    text-decoration: none;       
+    color: inherit;              
+    background-color: #0f172a;
+    padding: 16px;
+    border-radius: 12px;
     border: 1px solid #3d475a;
-}   
+    transition: transform .08s ease, box-shadow .12s ease;
+    cursor: pointer;
+}
 
 .denuncia span {
     display: inline-block;
     color: #87909f;
-    margin-right: 16px; /* espaçamento entre os spans */
+    margin-right: 16px; 
     vertical-align: middle;
 }
-/* opcional: quebra de linha responsiva */
+
 @media (max-width: 480px) {
     .denuncia span {
         display: block;
@@ -166,7 +233,7 @@ body{
     }
 }
 
-.denunciaHeader {
+.denuncia .denunciaHeader {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -174,13 +241,12 @@ body{
     margin-bottom: 8px;
 }
 
-.denunciaHeader #tituloDenuncia {
+.denunciaHeader .tituloDenuncia {
     margin: 0;
     font-size: 1.2rem;
     color: #fff;
 }
 
-/* Ajuste do botão para não usar largura percentual fixa */
 .status {
     font-family: "Open Sans", sans-serif;
     background-color: #16a34a;

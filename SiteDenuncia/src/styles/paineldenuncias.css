@@ -2,9 +2,12 @@ body{
     background-color: #020617;
 }
 
+
+
+
 .menuLateral {
     width: 20%;
-    background-color: #fafafa;
+    background-color: hsl(0, 0%, 98%);
     height: 100vh;
     position: fixed;
     top: 0;
@@ -12,6 +15,33 @@ body{
     display: flex;
     flex-direction: column;
     padding-top: 20px;
+}
+
+.menuHeader {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 8px;
+    align-items: center;
+    gap: 18px;
+    padding: 18px;
+    margin-left: 10px;
+
+}
+
+.imgEscudo {
+    display: block;
+    width: 20%;
+    height: auto;
+    margin-top: 3%;
+    border-radius: 15px;
+}
+
+.menuTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 62%;
+    margin-top: 2%;
 
 }
 
@@ -24,6 +54,7 @@ body{
     color: #020617;
 }
 
+
 .menuLateral p {
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
@@ -35,10 +66,11 @@ body{
 
 .menuLinha {
     border: none;
-    height: 2px;
+    height: 1px;
     width: 100%;
     background: #000000;
     margin: 12px auto;
+    margin-bottom: 20px;
 }
 
 .menuLateral a {
@@ -68,7 +100,7 @@ body{
     margin-bottom: 10px;
 }
 
-#subtitulo {    
+.subtitulo {    
     font-family: "Open Sans", sans-serif;
     font-weight: bold;
     margin-bottom: 10px;
@@ -90,6 +122,8 @@ body{
     flex-wrap: wrap;
 }
 
+
+
 .categorias select,
 .filtros .campo select,
 select {
@@ -104,7 +138,7 @@ select {
 }
 
 .categorias label,
-fieldset label {
+.campo label {
     display: block;
     margin-bottom: 6px;
     color: #87909f;
@@ -112,11 +146,11 @@ fieldset label {
     font-weight: 600;
 }
 
-.categorias fieldset {
+.categorias .campo {
     display: flex;
     flex-direction: column;
     gap: 8px;   
-    min-width: 32%;
+    min-width: 23.5%;
     border: none;
     margin: 0;
     padding: 0;
@@ -125,9 +159,9 @@ fieldset label {
 .categorias input,
 .categorias select,
 .categorias textarea,
-fieldset input,
-fieldset select,
-fieldset textarea {
+.campo input,
+.campo select,
+.campo textarea {
     width: 100%;
     padding: 10px;
     border-radius: 8px;
@@ -137,15 +171,20 @@ fieldset textarea {
     box-sizing: border-box;
 }
 
-@media (max-width: 780px) {
-    .categorias {
-        flex-direction: column;
-    }
-    .categorias fieldset,
-    fieldset {
-        width: 100%;
-    }
+.limparFiltros {
+    
+    background-color: #1e293b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 90%;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1%;
 }
+
+
+
 
 .caixaDen {
     background-color: #0f172a;
@@ -156,19 +195,20 @@ fieldset textarea {
 }
 
 .denuncia {
-    background-color: #1e293b;
-    padding: 2%;
-    border-radius: 8px;
-    margin-bottom: 15px;
+    display: block;             
+    text-decoration: none;       
+    color: inherit;              
+    background-color: #0f172a;
+    padding: 16px;
+    border-radius: 12px;
     border: 1px solid #3d475a;
-}   
-
-.denuncia span {
-    display: inline-block;
-    color: #87909f;
-    margin-right: 16px;
-    vertical-align: middle;
+    transition: transform .08s ease, box-shadow .12s ease;
+    cursor: pointer;
 }
+
+
+
+
 @media (max-width: 480px) {
     .denuncia span {
         display: block;
@@ -177,18 +217,26 @@ fieldset textarea {
     }
 }
 
-.denunciaHeader {
+.denuncia .denunciaHeader {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    margin-bottom: 8px;
+    margin-bottom: 30px;
 }
 
-.denunciaHeader #tituloDenuncia {
+.denunciaHeader  .imgDen {
+    width: 40px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.denunciaHeader .tituloDenuncia {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 26px;
     color: #fff;
+    margin-right: 65%;
 }
 
 .status {
@@ -204,3 +252,16 @@ fieldset textarea {
     white-space: nowrap;
 }
 
+.denuncia span {
+    display: inline-block;
+    color: #87909f;
+    margin-right: 16px; 
+    vertical-align: middle;
+}
+
+.denuncia #descricaoDenuncia {
+    margin: 12px 0;
+    color: #d1d5db;
+    font-size: 20px;
+    font-weight:500;
+}
