@@ -1,21 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/glacial-indifference" type="text/css"/>
-    <link rel="stylesheet" href="/SZN/src/styles/login.css">
+    <link rel="stylesheet" href="../sytles/login.css">
 </head>
 <body>
-    <div>
-    <img class="logo" src="../assets/logo.png" alt="">
-    </div>
-    <h2>Acessar minha conta</h2>
-    <div id="erro" class="erro"></div>
-    <input type="text" id="nick" class="input-nick" placeholder="E-mail" maxlength="20" autocomplete="off" />
-    <input type="password" id="password" class="input-password" placeholder="Senha" maxlength="20" autocomplete="off" />
+  <div class="login-container">
+    <img class="logo" src="../assets/logo.png" alt="Logo">
+    
+    <h1>ACESSAR MINHA CONTA</h1>
+
+    <input type="text" id="nick" class="input" placeholder="E-mail" maxlength="40" autocomplete="off">
+    <br>    
+    <input type="password" id="password" class="input" placeholder="Senha" maxlength="20" autocomplete="off">
     <br>
-    <button class="botao-go" type="submit">Entrar</button>
+    <button class="botao" id="botao" onclick="window.location.href='inicial.html'"type="submit">Entrar</button>
+    </br>
+    <div class="links">
+      <a href="#" class="link">Esqueceu sua <span>senha?</span></a>
+      <a href="#" class="link" onclick="window.location.href='cadastro.html'">Não tem uma conta? <span>Crie uma</span></a>
+    </div>
+  </div>
 </body>
 </html>
