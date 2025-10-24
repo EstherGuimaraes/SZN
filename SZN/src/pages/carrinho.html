@@ -8,11 +8,17 @@
 </head>
 <body>
   <header class="header">
-    <h1 class="logo">SZN <span>SEASON</span></h1>
-    <div class="header-icons">
-      <img src="../assets/1.png" alt="Busca" class="search-icon">
-      <img src="../assets/2.png" alt="Compras" class="cart-icon">
-      <img src="../assets/6.png" alt="Perfil" class="profile-icon">
+    <div class="header-left"></div> <!-- espaço à esquerda para centralizar o logo -->
+
+    <div class="szn">
+      <img id="imgLogo" class="logo" src="../assets/logo.png" alt="logo">
+      <hr class="logo-line">
+    </div>
+
+    <div class="icone">
+      <button class="botao-barra" aria-label="buscar"><img id="pesquisaImg" class="barraImg" src="../assets/1.png" alt=""></button>
+      <button class="botao-barra" aria-label="carrinho"><img id="comprarImg" class="barraImg" src="../assets/2.png" alt=""></button>
+      <button class="botao-barra" aria-label="perfil"><img id="iconeImg" class="barraImg" src="../assets/6.png" alt=""></button>
     </div>
   </header>
 
@@ -39,14 +45,13 @@
             </div>
           </td>
           <td class="price">R$ 225,00</td>
-        <td class="quantity">
-          <div class="quantity-controls">
-            <button class="qty-btn minus">−</button>
-            <span class="qty">1</span>
-            <button class="qty-btn plus">+</button>
-         </div>
-        </td>
-
+          <td class="quantity">
+            <div class="quantity-controls">
+              <button class="qty-btn minus">−</button>
+              <span class="qty">1</span>
+              <button class="qty-btn plus">+</button>
+            </div>
+          </td>
           <td class="total">R$ 225,00</td>
         </tr>
       </tbody>
