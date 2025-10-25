@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informações de Compra - SZN</title>
+
+  
+  <link rel="stylesheet" href="szn/src/styles/info-compras.css">
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>SZN</h1>
+    <p>SEASON</p>
+    <hr>
+  </header>
+
+  <main>
+    <section class="formulario">
+      <h2>Contato</h2>
+      <input type="email" placeholder="E-mail">
+
+      <h2>Entrega</h2>
+      <input type="text" placeholder="País/Região">
+      <div class="linha">
+        <input type="text" placeholder="Nome">
+        <input type="text" placeholder="Sobrenome">
+      </div>
+      <input type="text" placeholder="CEP">
+      <input type="text" placeholder="Endereço de entrega">
+      <input type="text" placeholder="Telefone">
+      <select>
+        <option selected disabled>Modelo de entrega</option>
+        <option>Entrega Padrão</option>
+        <option>Entrega Expressa</option>
+      </select>
+
+      <div class="pagamento">
+        <p>Forma de Pagamento:</p>
+        <div class="botoes">
+          <button class="pix">Pix</button>
+          <button class="credito">Crédito</button>
+          <button class="debito">Débito</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="resumo">
+      <div class="item">
+        <img src="../images/jaqueta.jpg" alt="Jaqueta Bomber Feminina - Suki">
+        <div class="descricao">
+          <p class="titulo">Jaqueta Bomber Feminina - Suki</p>
+          <p>P/ Único</p>
+        </div>
+        <span class="preco">R$ 225,00</span>
+      </div>
+
+      <div class="totais">
+        <hr>
+        <p><strong>Subtotal</strong> - 1 item</p>
+        <p><strong>Frete:</strong> Inserir endereço de entrega</p>
+        <p><strong>Total:</strong> <span class="moeda">BRL</span> R$ 225,00</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

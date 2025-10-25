@@ -1,0 +1,183 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background: #fff;
+  color: #000;
+}
+
+
+header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+header h1 {
+  font-size: 45px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+header p {
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-top: -4px;
+}
+
+header hr {
+  width: 100px;
+  border: none;
+  border-top: 1px solid #aaa;
+  margin: 8px auto;
+}
+
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+
+.formulario {
+  width: 45%;
+  background: #f5f5f5;
+  padding: 40px;
+  border-radius: 6px;
+}
+
+.formulario h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.formulario input,
+.formulario select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.linha {
+  display: flex;
+  gap: 10px;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+
+.pagamento {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagamento p {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.botoes {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.botoes button {
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.pix {
+  background: #6ef9a1;
+}
+
+.credito {
+  background: #a9b9ff;
+}
+
+.debito {
+  background: #b2b2ff;
+}
+
+
+.resumo {
+  width: 35%;
+  padding: 30px 40px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.item img {
+  width: 70px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.descricao {
+  flex: 1;
+  margin-left: 15px;
+  text-align: left;
+}
+
+.descricao .titulo {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.descricao p {
+  font-size: 13px;
+  color: #333;
+}
+
+.preco {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.totais {
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.totais hr {
+  border: none;
+  border-top: 2px solid #222;
+  margin-bottom: 15px;
+}
+
+.totais p {
+  margin-bottom: 8px;
+}
+
+.moeda {
+  font-size: 12px;
+  color: #888;
+  margin-right: 4px;
+}
