@@ -1,0 +1,195 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  color: #111;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 6%;
+  max-width: 100%;
+}
+
+/* area que contém o logo e a linha abaixo */
+.szn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-right: 40%;
+}
+
+/* logo maior e centralizada */
+.logo {
+  width: 180px; /* ajuste para aumentar/diminuir */
+  height: auto;
+  display: block;
+}
+
+/* linha fina abaixo do logo (como na inspiração) */
+.logo-line {
+  width: 360px;
+  height: 1px;
+  background: #d6d0cd;
+  border: none;
+  border-radius: 2px;
+  margin-top: 6px;
+}
+
+
+.container {
+      display: flex;
+      width: 90%;
+      max-width: 1100px;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        margin: 40px auto;
+        margin-top: 0%;
+    }
+
+    /* Lado esquerdo - formulário */
+    .form-section {
+      flex: 1.2;
+      background: #f3f3f3;
+      padding: 40px;
+    }
+
+    .form-section h2 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      color: #222;
+    }
+
+    .form-section input, 
+    .form-section select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      background-color: white;
+    }
+
+    .name-fields {
+      display: flex;
+      gap: 10px;
+    }
+
+    .payment {
+      margin-top: 30px;
+    }
+
+    .payment p {
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .payment-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .payment-buttons button {
+      border: none;
+      padding: 10px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+      transition: transform 0.2s;
+    }
+
+    .payment-buttons button:hover {
+      transform: scale(1.05);
+    }
+
+    .pix { background-color: #74f5a7; color: #000; }
+    .credito { background-color: #9fa8f9; }
+    .debito { background-color: #9fa8f9; }
+
+    /* Lado direito - resumo do pedido */
+    .summary {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .product {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+
+    .product img {
+      width: 70px;
+      height: 70px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      flex: 1;
+    }
+
+    .product-info h3 {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 3px;
+    }
+
+    .product-info span {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .product-price {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .total-section {
+      margin-top: 408px;
+      border-top: 2px solid #222;
+      padding-top: 20px;
+      line-height: 1.8;
+    }
+
+    .total-section p {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .total-section .total {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .total-section small {
+      color: gray;
+      font-size: 13px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 850px) {
+      .container {
+        flex-direction: column;
+      }
+      .form-section, .summary {
+        width: 100%;
+      }
+    }
