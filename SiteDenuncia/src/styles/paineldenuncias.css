@@ -73,6 +73,15 @@ body{
     margin-bottom: 20px;
 }
 
+.menuLateral h4 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #737373;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
 .menuLateral a {
     font-family: "Open Sans", sans-serif;
     font-weight: bold;
@@ -81,9 +90,14 @@ body{
     padding: 15px 20px;
     border-bottom: 1px solid #ddd;
     transition: background-color 0.3s;
+    margin-left: 10px;
 }
 
-
+.menuLateral a:hover,
+.menuLateral a.active {
+  background-color: #60a5fa;
+  color: #fff;
+}
 
 
 .mainPainel {

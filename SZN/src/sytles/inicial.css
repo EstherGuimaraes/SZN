@@ -67,6 +67,24 @@ header {
 }
 
 .secoes{
+    border-radius: 500px;
     margin-top: 50px;
-    
+}
+
+.secoesImg{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ccc; 
+    display: block;
+}
+
+.botao-secoes{
+    width: 300px;
+    height: 300px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    display: inline-block;
 }
