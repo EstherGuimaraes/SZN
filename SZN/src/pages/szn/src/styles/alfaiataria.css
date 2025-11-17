@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -6,16 +12,10 @@ body {
 
 }
 
-    * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-    }
-
-    header {
-            display: flex;
-            justify-content: space-around;
-    }
+header {
+    display: flex;
+    justify-content: space-around;
+}
 
 .logo {
     height: 350px;
@@ -24,11 +24,11 @@ body {
 
 .logo-line {
     width: 600px;
-    height: 5px;
+    height: 3px;
     background: #cdcdcd;
     border: none;
     display: block;
-    margin: 25px auto 0;
+    margin: -80px auto 0;
     border-radius: 6px;
 }
 
@@ -59,46 +59,16 @@ body {
     margin-right: 70px;
 }
 
-.carrossel{
-    margin-top: -70px; 
-    width: 1900px;
-    height: 600px;
-    border: 3px solid rgb(0, 0, 0);
-}
-
-.secoes{
-    border-radius: 500px;
-    margin-top: 50px;
-}
-
-.secoesImg{
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #ccc; 
-    display: block;
-}
-
-.botao-secoes{
-    width: 250px;
-    height: 250px;
-    padding: 0;
-    overflow: hidden;
-    border-radius: 50%;
-    display: inline-block;
-}
-
 .container {
   display: flex;
-  gap: 80px;
+  gap: 25px;
   justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.secoes{
+.produtos{
   display: flex;
   justify-content: center;
   gap: 30px;
@@ -106,7 +76,8 @@ body {
   margin-top: 0%; 
 }
 
-.secoes-roupas  { 
+.produto  {
+  border: 2px solid #000000; 
   padding: 2px;
   text-align: center;
   transition: 0.3s;
@@ -125,34 +96,26 @@ body {
 }
 
 .text {
-    font-size: 16px;
-    margin-top: 8px;
-    width: auto;
-    text-align: center;
-    padding: 6px 8px;
+  font-size: 1000px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: left;
+  padding: 6px 8px;
 }
 
 .text h3 {
-  font-size: 20px;
+  font-size: 13px;
   color: #000;
-  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
-.logo-line1 {
-    width: 600px;
-    height: 5px;
-    background: #cdcdcd;
-    border: none;
-    display: block;
-    margin: 1px auto 0;
-    border-radius: 6px;
+.text p {
+  font-size: 12px;
+  color: #b4a9a9; /* cinza claro igual à imagem */
 }
 
-.botao-secoes:hover {
+.produto:hover {
   transform: scale(1.02);
   box-shadow: 0 0 10px #000000;
-  width: 250px;
-  height: 250px;
-border-radius: 50%;
-cursor: pointer;
 }
