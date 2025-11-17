@@ -47,20 +47,20 @@ body{
 
 .menuLateral #titulosite {
     font-family: "Open Sans", sans-serif;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     color: #020617;
 }
 
 
 .menuLateral p {
     font-family: "Open Sans", sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
     margin-top: -7%;
-    margin-bottom: 20px;
+    margin-bottom: 9px;
     color: #555;
 }
 
@@ -110,7 +110,7 @@ body{
 #titulo {
     font-family: "Open Sans", sans-serif;
     font-weight: bold;
-    font-size: 300%;
+    font-size: 43px;
     margin-bottom: 10px;
 }
 
@@ -125,6 +125,7 @@ body{
 .categorias {
     background-color: #0f172a;
     padding: 2%;
+    padding-bottom: calc(2% + 3.5rem);
     border-radius: 20px;
     flex: 1;
     width: 96%;
@@ -133,7 +134,8 @@ body{
 
     display: flex;
     gap: 20px;
-    flex-wrap: wrap;
+    position: relative; 
+    
 }
 
 
@@ -186,7 +188,9 @@ select {
 }
 
 .limparFiltros {
-    
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
     background-color: #1e293b;
     color: #fff;
     border: none;
@@ -194,7 +198,13 @@ select {
     font-size: 90%;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 1%;
+    padding: 10px 14px;
+    margin: 0;
+}
+
+.limparFiltros h3 {
+    margin: 0;
+    font-size: 100%;
 }
 
 
@@ -248,9 +258,9 @@ select {
 
 .denunciaHeader .tituloDenuncia {
     margin: 0;
-    font-size: 26px;
+    font-size: 19px;
     color: #fff;
-    margin-right: 65%;
+    margin-right: 54%;
 }
 
 .status {
