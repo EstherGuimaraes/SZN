@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detalhes da Denúncia</title>
   <link rel="stylesheet" href="../styles/detalhedenuncia.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-id="denuncia-001">
+ 
   <div id="sidebar" class="sidebar">
     <div class="menuHeader">
-      <img id="imgEscudo" class="imgEscudo" src="../assets/4.png" alt="Escudo">
+      <img id="imgEscudo" class="imgEscudo" src="/SiteDenuncia/src/assets/4.png" alt="Escudo">
       <div class="menuTitle">
         <h2 id="title">Sistema Policial</h2>
         <p>Gerenciamento de Denúncias</p>
       </div>
     </div>
-    <hr class="menuLinha">
+    <hr class="menuLinha">    
     <h4>Navegação</h4>
     <a href="painelcontrole.html">Painel de Controle</a>
     <a href="paineldenuncias.html">Denúncias</a>
@@ -31,92 +31,60 @@
     <section class="info-card">
       <div class="card-header">
         <h2>Informações Principais</h2>
-        <div class="btn-group">
-          <button id="edit-btn" class="edit-btn">Editar</button>
-          <button id="save-btn" class="save-btn">Salvar Alterações</button>
-          <button id="cancel-btn" class="cancel-btn">Cancelar</button>
+        <button class="edit-btn">Editar</button>
+      </div>
+
+      <div class="status-actions">
+        <span class="status">Status: Novo</span>
+      </div>
+
+      <p class="descricao">
+        Vizinha relatou gritos de socorro e sons de agressão vindos do apartamento 302. Já é a terceira vez este mês que episódios similares ocorrem.
+      </p>
+
+      <div class="details">
+        <div>
+          <strong>Local da Ocorrência</strong>
+          <p class="detail-value">Rua xxxxxx, xxx - Bairro</p>
+        </div>
+        <div>
+          <strong>Cidade/Estado</strong>
+          <p class="detail-value">São Paulo - SP</p>
+        </div>
+        <div>
+          <strong>Data da Ocorrência</strong>
+          <p class="detail-value">15/12/2025 às 11:18</p>
+        </div>
+        <div>
+          <strong>Tipo de Crime</strong>
+          <p class="detail-value">Agressão física</p>
         </div>
       </div>
 
-      <span class="status resolvida" id="status-badge">Status: Resolvida</span>
-
-      <div class="editable-area">
-        <div class="field-group">
-          <label><strong>Descrição da Denúncia</strong></label>
-          <p class="descricao" id="field-descricao">
-            Vizinha relatou gritos de socorro e sons de agressão vindos do apartamento 302. Já é a terceira vez este mês que episódios similares ocorrem.
-          </p>
-        </div>
-
-        <div class="field-row">
-          <div class="field-group">
-            <label><strong>Local da Ocorrência</strong></label>
-            <p id="field-local">Rua das Palmeiras, 150 - Jardim Paulista</p>
-          </div>
-          <div class="field-group">
-            <label><strong>Cidade/Estado</strong></label>
-            <p id="field-cidade">São Paulo - SP</p>
-          </div>
-        </div>
-
-        <div class="field-row">
-          <div class="field-group">
-            <label><strong>Data da Ocorrência</strong></label>
-            <p id="field-data">15/12/2025 às 11:18</p>
-          </div>
-          <div class="field-group">
-            <label><strong>Tipo de Crime</strong></label>
-            <p id="field-crime">Agressão física</p>
-          </div>
-        </div>
-
-        <div class="field-group">
-          <label><strong>Informações do Suspeito</strong></label>
-          <p id="field-suspeito">Homem, aproximadamente 35 anos, mora no apartamento com a companheira</p>
-        </div>
+      <div class="suspeito">
+        <strong>Informações do Suspeito</strong>
+        <p class="suspeito-desc">Homem, aproximadamente 35 anos, mora no apartamento com a companheira</p>
       </div>
     </section>
 
     <div class="side-panels">
       <section class="panel">
         <h3>Investigação</h3>
-        <div id="investigation-content">
-          <p>Nenhum investigador atribuído</p>
-        </div>
-        <div class="investigation-actions">
-          <select id="investigator-select">
-            <option value="">— Selecione um investigador —</option>
-            <option value="Dr. Carlos Mendes">Dr. Carlos Mendes</option>
-            <option value="Dra. Ana Lúcia Silva">Dra. Ana Lúcia Silva</option>
-            <option value="Insp. Roberto Almeida">Insp. Roberto Almeida</option>
-            <option value="Insp. Juliana Costa">Insp. Juliana Costa</option>
-          </select>
-          <button id="assign-btn">Atribuir Investigador</button>
-        </div>
+        <p>Nenhum investigador atribuído</p>
       </section>
-
       <section class="panel">
         <h3>Informações do Sistema</h3>
         <p><strong>Origem da Denúncia</strong><br>Site SZN</p>
-        <p><strong>ID da Denúncia</strong><br>#105</p>
       </section>
     </div>
 
     <section class="reporter">
       <h2>Informações do Denunciante</h2>
-      <div class="field-row">
-        <div class="field-group">
-          <label><strong>Nome</strong></label>
-          <p id="field-reporter-name">Maria</p>
-        </div>
-        <div class="field-group">
-          <label><strong>Contato</strong></label>
-          <p id="field-reporter-phone">(11) 98765-4321</p>
-        </div>
-      </div>
+      <p><strong>Nome:</strong> Maria</p>
+      <p><strong>Contato:</strong> (xx) xxxxx-xxxx</p>
     </section>
   </main>
 
-  <script src="../services/detalhedenuncia.js"></script>
+  <script src="../services/detalhedenuncias.js"></script>
 </body>
 </html>
