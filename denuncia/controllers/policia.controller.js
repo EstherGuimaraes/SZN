@@ -1,4 +1,4 @@
-import { getAll, getById } from "../services/policia_service.js";
+import { getAll, getById } from "../services/policia.service.js";
 
 export function listarDenuncias(req, res) {
     const data = getAll();
