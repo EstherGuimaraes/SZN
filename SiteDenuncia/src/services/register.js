@@ -2,6 +2,15 @@ import AuthService from './auth-api.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("register-form");
+    
+    // Link para voltar para login
+    const returnLink = document.querySelector(".return-link a");
+    if (returnLink) {
+        returnLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.location.href = "pagelogin.html";
+        });
+    }
 
     // Função de validação individual
     function validarCampo(campo, valor) {
@@ -73,6 +82,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.classList.remove("invalido");
             }
         });
+
+        // Permitir Enter no campo de senha para enviar o formulário
+        if (input.type === 'password' || input.id === 'senha') {
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    form.dispatchEvent(new Event('submit'));
+                }
+            });
+        }
     });
 
     // Submeter formulário

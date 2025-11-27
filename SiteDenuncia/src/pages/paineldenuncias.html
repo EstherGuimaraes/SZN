@@ -255,6 +255,13 @@
             modal.style.display = 'none';
         });
 
+        // Fechar modal ao clicar fora dele (no overlay)
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
         formNova.addEventListener('submit', async (e) => {
             e.preventDefault();
             
