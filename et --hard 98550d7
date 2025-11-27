@@ -1,0 +1,86 @@
+[33m901d6ac[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Merge branch 'BackEnd'
+[33m16dbef7[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge remote-tracking branch 'origin/FrontEnd'
+[33m98550d7[m[33m ([m[1;31morigin/BackEnd[m[33m, [m[1;32mBackEnd[m[33m)[m terminado
+[33m94ac5a7[m Falta conectar o banco de dados
+[33m6e757fe[m[33m ([m[1;31morigin/FrontEnd[m[33m, [m[1;32mFrontEnd[m[33m)[m Update blusa.html
+[33m56697f3[m ARRUMEI A API
+[33mda4f6b3[m Update blusa.html
+[33m6a1e04f[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33m1abe5be[m Restante do JS
+[33m0d18376[m Update pagamento.html
+[33m1ca2e9e[m tenho q arrumar a parte de denuncias
+[33m3c97f08[m API DE LOGIN
+[33mca892ec[m Delete src directory
+[33m26a3a0c[m API login
+[33m1e8765b[m test
+[33m198b9a7[m Merge branch 'BackEnd' of https://github.com/EstherGuimaraes/SZN into BackEnd
+[33m2b8d9b6[m Removi JWT_SECRET from .env file
+[33m81272ec[m testando .env
+[33m824fa46[m Login.js
+[33mfe9324e[m JavaScript
+[33mfefad75[m servidor ta rodando
+[33mf44df39[m evento carrinho
+[33mf9a079e[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33m15a80ad[m ihbbib
+[33maf07765[m Páginas final e inicial
+[33ma544d1d[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33m2873a65[m inicial e produto
+[33mdc74c15[m Alfaiataria
+[33meff7b19[m Pagamento
+[33m85bc3ec[m Add files via upload
+[33mcf9f957[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33mb0c8eda[m pagamento
+[33mb06ee3c[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33ma5bfcaf[m Merge pull request #1 from EstherGuimaraes/FrontEnd
+[33m7fbafd1[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33m09e9758[m Carrinho2
+[33m53cf797[m Carrinho
+[33md792f72[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33m4f096af[m secoes
+[33me9266fa[m pastas
+[33m5c09df9[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33mc1eda97[m Blusa
+[33m60ca2c0[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33m2e3741e[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33mf6a12d0[m secoes
+[33m3834d6a[m Alterações páginas detalhes/controle/denuncias
+[33m31fdcc2[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33m86b07bf[m Blusas
+[33m661fea7[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33macb840f[m arrumando coisa
+[33mb869e70[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33m9320491[m inicialsecao
+[33m4b879ab[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33m0e52721[m Conjunto
+[33m47b894b[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33mc36ed2f[m Falta arrumar detalhe
+[33m9503225[m inicial
+[33m0615e19[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33m3080a4d[m logocasaco
+[33mca3995b[m Adição de informações
+[33me0eb2a7[m Update logo.css
+[33me3eff81[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33m3ed0fba[m logo
+[33mb9115e8[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33m7e8513d[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33me5c5f7b[m logo
+[33m93e9bd2[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33mede9016[m Detalhedenuncia
+[33mf6a7e88[m mudança seção casaco
+[33mca2a821[m tela de login e cadastro
+[33m8b81f25[m painel controle e denúncias
+[33m7e7d716[m casaco
+[33m6563536[m logo
+[33mca83885[m header
+[33m10540fb[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33mb94639a[m casaco
+[33ma8629c2[m Cadastro e Login
+[33m0f8eaf3[m página denúncias
+[33m474dea4[m carrosel
+[33m901f66d[m Merge branch 'FrontEnd' of https://github.com/EstherGuimaraes/SZN into FrontEnd
+[33m1d0faf6[m carrossel
+[33m396bcc1[m pagina login
+[33mb1adbb5[m cabeçalho
+[33mc5096ad[m SiteDenunciaN2
+[33m00d6f51[m Criação de pasta denunca
+[33m0d3b106[m Initial commit
