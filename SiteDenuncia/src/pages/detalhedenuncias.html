@@ -6,8 +6,9 @@
   <title>Detalhes da Denúncia</title>
   <link rel="stylesheet" href="../styles/detalhedenuncia.css">
 </head>
-<body data-id="denuncia-001">
- 
+
+<body>
+
   <div id="sidebar" class="sidebar">
     <div class="menuHeader">
       <img id="imgEscudo" class="imgEscudo" src="/SiteDenuncia/src/assets/4.png" alt="Escudo">
@@ -16,8 +17,10 @@
         <p>Gerenciamento de Denúncias</p>
       </div>
     </div>
-    <hr class="menuLinha">    
+
+    <hr class="menuLinha">
     <h4>Navegação</h4>
+
     <a href="painelcontrole.html">Painel de Controle</a>
     <a href="paineldenuncias.html">Denúncias</a>
   </div>
@@ -31,60 +34,84 @@
     <section class="info-card">
       <div class="card-header">
         <h2>Informações Principais</h2>
-        <button class="edit-btn">Editar</button>
-      </div>
 
-      <div class="status-actions">
-        <span class="status">Status: Novo</span>
-      </div>
-
-      <p class="descricao">
-        Vizinha relatou gritos de socorro e sons de agressão vindos do apartamento 302. Já é a terceira vez este mês que episódios similares ocorrem.
-      </p>
-
-      <div class="details">
-        <div>
-          <strong>Local da Ocorrência</strong>
-          <p class="detail-value">Rua xxxxxx, xxx - Bairro</p>
-        </div>
-        <div>
-          <strong>Cidade/Estado</strong>
-          <p class="detail-value">São Paulo - SP</p>
-        </div>
-        <div>
-          <strong>Data da Ocorrência</strong>
-          <p class="detail-value">15/12/2025 às 11:18</p>
-        </div>
-        <div>
-          <strong>Tipo de Crime</strong>
-          <p class="detail-value">Agressão física</p>
+        <div class="btn-group">
+          <button id="edit-btn" class="edit-btn">Editar</button>
+          <button id="save-btn" class="save-btn">Salvar</button>
+          <button id="cancel-btn" class="cancel-btn">Cancelar</button>
         </div>
       </div>
 
-      <div class="suspeito">
-        <strong>Informações do Suspeito</strong>
-        <p class="suspeito-desc">Homem, aproximadamente 35 anos, mora no apartamento com a companheira</p>
+      <span id="status-badge" class="status">Status: Novo</span>
+
+      <div class="editable-area">
+
+        <div class="field-group">
+          <label>Descrição</label>
+          <p id="field-descricao"></p>
+        </div>
+
+        <div class="field-row">
+
+          <div class="field-group">
+            <label>Local</label>
+            <p id="field-local"></p>
+          </div>
+
+          <div class="field-group">
+            <label>Cidade / Estado</label>
+            <p id="field-cidade"></p>
+          </div>
+
+        </div>
+
+        <div class="field-row">
+
+          <div class="field-group">
+            <label>Data da Ocorrência</label>
+            <p id="field-data"></p>
+          </div>
+
+          <div class="field-group">
+            <label>Tipo de Crime</label>
+            <p id="field-crime"></p>
+          </div>
+
+        </div>
+
+        <div class="field-group">
+          <label>Informações do Suspeito</label>
+          <p id="field-suspeito"></p>
+        </div>
+
       </div>
     </section>
 
-    <div class="side-panels">
-      <section class="panel">
-        <h3>Investigação</h3>
-        <p>Nenhum investigador atribuído</p>
-      </section>
-      <section class="panel">
-        <h3>Informações do Sistema</h3>
-        <p><strong>Origem da Denúncia</strong><br>Site SZN</p>
-      </section>
-    </div>
+    <section class="panel">
+      <h3>Investigação</h3>
 
+      <div id="investigation-content"></div>
+
+      <select id="investigator-select">
+        <option value="">Selecione</option>
+        <option value="Delegado Marcos">Delegado Marcos</option>
+        <option value="Delegada Ana Paula">Delegada Ana Paula</option>
+        <option value="Inspetor Roberto">Inspetor Roberto</option>
+      </select>
+
+      <button id="assign-btn">Atribuir Investigador</button>
+    </section>
+
+    <!-- DENUNCIANTE -->
     <section class="reporter">
       <h2>Informações do Denunciante</h2>
-      <p><strong>Nome:</strong> Maria</p>
-      <p><strong>Contato:</strong> (xx) xxxxx-xxxx</p>
+
+      <p><strong>Nome:</strong> <span id="field-reporter-name"></span></p>
+      <p><strong>Contato:</strong> <span id="field-reporter-phone"></span></p>
     </section>
+
   </main>
 
-  <script src="../services/detalhedenuncias.js"></script>
+  <script src="../services/detalhedenuncia.js"></script>
 </body>
 </html>
