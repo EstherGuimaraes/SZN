@@ -78,29 +78,6 @@
             </form>
         </div>
     </div>
-    <script src="../services/register.js"></script>
-    <script src="../services/loginauth.js"></script>
-    <script>
-        document.querySelectorAll('.input-group input').forEach(input => {
-            input.addEventListener('blur', function() {
-                const campo = this.id;
-                const valor = this.value;
-                const resultado = window.validation.validarCampo(campo, valor);
-                
-                const mensagemElement = this.parentElement.querySelector('.mensagem-erro') 
-                    || document.createElement('div');
-                mensagemElement.className = 'mensagem-erro';
-                
-                if (!resultado.valido) {
-                    mensagemElement.textContent = resultado.mensagem;
-                    this.parentElement.appendChild(mensagemElement);
-                    this.classList.add('invalido');
-                } else {
-                    mensagemElement.remove();
-                    this.classList.remove('invalido');
-                }
-            });
-        });
-    </script>
+    <script type="module" src="../services/register.js"></script>
 </body>
 </html>

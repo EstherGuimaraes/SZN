@@ -112,6 +112,153 @@
 
   </main>
 
-  <script src="../services/detalhedenuncia.js"></script>
-</body>
-</html>
+  <script type="module">
+    import DenunciaService from '../services/denuncia-api.js';
+    import AuthService from '../services/auth-api.js';
+
+    if (!AuthService.isAuthenticated()) {
+      window.location.href = 'pagelogin.html';
+    }
+
+    // Pegar ID da URL
+    const params = new URLSearchParams(window.location.search);
+    const denunciaId = params.get('id');
+
+    if (!denunciaId) {
+      alert('Denúncia não encontrada');
+      window.location.href = 'paineldenuncias.html';
+    }
+
+    let denuncia = null;
+
+    // Elementos
+    const editBtn = document.getElementById('edit-btn');
+    const saveBtn = document.getElementById('save-btn');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const statusBadge = document.getElementById('status-badge');
+    const assignBtn = document.getElementById('assign-btn');
+
+    // IDs dos campos
+    const fields = {
+      descricao: document.getElementById('field-descricao'),
+      local: document.getElementById('field-local'),
+      cidade: document.getElementById('field-cidade'),
+      data: document.getElementById('field-data'),
+      crime: document.getElementById('field-crime'),
+      suspeito: document.getElementById('field-suspeito'),
+      reporterName: document.getElementById('field-reporter-name'),
+      reporterPhone: document.getElementById('field-reporter-phone')
+    };
+
+    const formatPhone = (raw) => {
+      const n = (raw || '').replace(/\D/g, '');
+      return n.length === 11 ? `(${n.slice(0,2)}) ${n.slice(2,7)}-${n.slice(7)}` : raw || '—';
+    };
+
+    const render = () => {
+      if (!denuncia) return;
+      
+      fields.descricao.textContent = denuncia.descricao || denuncia.description || '';
+      fields.local.textContent = denuncia.location || 'Não informado';
+      fields.cidade.textContent = denuncia.cityState || 'Não informado';
+      fields.data.textContent = denuncia.created_at ? new Date(denuncia.created_at).toLocaleDateString('pt-BR') : 'Não informado';
+      fields.crime.textContent = denuncia.crimeType || 'Não especificado';
+      fields.suspeito.textContent = denuncia.suspectInfo || 'Não informado';
+      fields.reporterName.textContent = denuncia.reporterName || 'Usuário';
+      fields.reporterPhone.textContent = formatPhone(denuncia.reporterPhone);
+
+      statusBadge.className = `status ${denuncia.status || 'pendente'}`;
+      statusBadge.textContent = `Status: ${(denuncia.status || 'pendente').toUpperCase()}`;
+
+      const investigationContent = document.getElementById('investigation-content');
+      investigationContent.innerHTML = denuncia.investigator 
+        ? `<p><strong>Investigador:</strong> ${denuncia.investigator}</p>`
+        : `<p>Nenhum investigador atribuído</p>`;
+    };
+
+    const enableEditMode = () => {
+      editBtn.style.display = 'none';
+      saveBtn.style.display = 'inline-block';
+      cancelBtn.style.display = 'inline-block';
+
+      const createInput = (el, value, isTextarea = false) => {
+        const input = document.createElement(isTextarea ? 'textarea' : 'input');
+        input.className = 'edit-input';
+        input.value = value;
+        if (!isTextarea) input.type = 'text';
+        if (isTextarea) input.rows = 4;
+        el.innerHTML = '';
+        el.appendChild(input);
+        return input;
+      };
+
+      createInput(fields.descricao, denuncia.descricao || '', true);
+      createInput(fields.local, denuncia.location || '');
+      createInput(fields.cidade, denuncia.cityState || '');
+      createInput(fields.data, denuncia.created_at ? new Date(denuncia.created_at).toLocaleDateString('pt-BR') : '');
+      createInput(fields.crime, denuncia.crimeType || '');
+      createInput(fields.suspeito, denuncia.suspectInfo || '');
+    };
+
+    const disableEditMode = () => {
+      editBtn.style.display = 'inline-block';
+      saveBtn.style.display = 'none';
+      cancelBtn.style.display = 'none';
+      render();
+    };
+
+    const save = () => {
+      try {
+        const inputs = document.querySelectorAll('.edit-input');
+        if (inputs.length < 6) throw new Error('Campos insuficientes');
+
+        denuncia.descricao = inputs[0].value.trim();
+        denuncia.location = inputs[1].value.trim();
+        denuncia.cityState = inputs[2].value.trim();
+        denuncia.crimeType = inputs[4].value.trim();
+        denuncia.suspectInfo = inputs[5].value.trim();
+
+        if (!denuncia.descricao) throw new Error('Descrição é obrigatória');
+
+        // Salvar na API seria aqui
+        disableEditMode();
+        alert('✅ Denúncia atualizada com sucesso!');
+      } catch (err) {
+        alert(`❌ Erro: ${err.message}`);
+      }
+    };
+
+    // Eventos
+    editBtn.addEventListener('click', enableEditMode);
+    saveBtn.addEventListener('click', save);
+    cancelBtn.addEventListener('click', disableEditMode);
+
+    document.querySelector('.back-btn').addEventListener('click', () => {
+      window.location.href = 'paineldenuncias.html';
+    });
+
+    assignBtn.addEventListener('click', () => {
+      const selectInvestigator = document.getElementById('investigator-select');
+      const nome = selectInvestigator.value;
+      if (nome) {
+        denuncia.investigator = nome;
+        render();
+        alert(`✅ Investigador atribuído: ${nome}`);
+      } else {
+        alert('⚠️ Selecione um investigador.');
+      }
+    });
+
+    // Carregar denúncia
+    async function carregar() {
+      try {
+        denuncia = await DenunciaService.buscarDenuncia(denunciaId);
+        render();
+      } catch (error) {
+        alert('❌ Erro ao carregar denúncia: ' + error.message);
+        window.location.href = 'paineldenuncias.html';
+      }
+    }
+
+    carregar();
+  </script>

@@ -1,11 +1,11 @@
-document.addEventListener("DOMContentLoaded", () => {
+import AuthService from './auth-api.js';
 
+document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("register-form");
 
     // Função de validação individual
     function validarCampo(campo, valor) {
         switch (campo) {
-
             case "nome":
                 if (valor.trim().length < 3) {
                     return { valido: false, mensagem: "Digite um nome válido (mín. 3 letras)" };
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
 
             case "cpf":
-                if (valor.length !== 11) {
+                if (!/^\d{11}$/.test(valor.replace(/\D/g, ''))) {
                     return { valido: false, mensagem: "CPF deve ter 11 números" };
                 }
                 break;
@@ -76,13 +76,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Submeter formulário
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         let dados = {};
         let valido = true;
 
-        const campos = ["nome", "genero", "datanascimento", "cpf", "endereco", "email", "senha"];
+        const campos = ["nome", "email", "senha"];
 
         campos.forEach(id => {
             const input = document.getElementById(id);
@@ -99,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     input.parentElement.appendChild(msg);
                 }
                 msg.textContent = res.mensagem;
-
             } else {
                 input.classList.remove("invalido");
                 dados[id] = input.value;
@@ -107,15 +106,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (!valido) {
-            alert("Preencha todos os campos corretamente.");
+            alert("Preencha todos os campos obrigatórios corretamente.");
             return;
         }
 
-        // Salvar no localStorage (pode trocar por API)
-        localStorage.setItem("usuario", JSON.stringify(dados));
+        const registerBtn = form.querySelector('button[type="submit"]');
+        registerBtn.disabled = true;
+        registerBtn.textContent = "Criando conta...";
 
-        alert("Conta criada com sucesso!");
-        window.location.href = "pagelogin.html";
+        try {
+            await AuthService.registrar(dados.nome, dados.email, dados.senha);
+            alert("✅ Conta criada com sucesso! Faça login agora.");
+            window.location.href = "pagelogin.html";
+        } catch (error) {
+            alert("❌ Erro ao criar conta: " + error.message);
+            registerBtn.disabled = false;
+            registerBtn.textContent = "Crie uma conta";
+        }
     });
-
 });

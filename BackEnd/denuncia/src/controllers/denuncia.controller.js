@@ -1,28 +1,65 @@
-const Denuncia = require("../models/Denuncia");
+import { getAll, getById, criarDenuncia } from "../services/denuncia.service.js";
 
-exports.listarDenuncias = async (req, res) => {
-  const denuncias = await Denuncia.findAll();
-  res.json(denuncias);
-};
+export async function listarDenuncias(req, res) {
+  try {
+    const denuncias = await getAll();
+    res.json({ 
+      total: denuncias.length,
+      denuncias 
+    });
+  } catch (error) {
+    console.error("Erro ao listar denúncias:", error);
+    res.status(500).json({ 
+      erro: "Erro ao listar denúncias",
+      mensagem: error.message 
+    });
+  }
+}
 
-exports.detalheDenuncia = async (req, res) => {
-  const denuncia = await Denuncia.findByPk(req.params.id);
-  if (!denuncia) return res.status(404).json({ erro: "Denúncia não encontrada" });
-  res.json(denuncia);
-};
+export async function detalheDenuncia(req, res) {
+  try {
+    const { id } = req.params;
+    const denuncia = await getById(id);
+    
+    if (!denuncia) {
+      return res.status(404).json({ 
+        erro: "Denúncia não encontrada" 
+      });
+    }
+    
+    res.json(denuncia);
+  } catch (error) {
+    console.error("Erro ao buscar denúncia:", error);
+    res.status(500).json({ 
+      erro: "Erro ao buscar denúncia",
+      mensagem: error.message 
+    });
+  }
+}
 
-exports.criarNovaDenuncia = async (req, res) => {
-  const { texto, titulo } = req.body;
-  const midia = req.file ? req.file.path : null;
+export async function criarNovaDenuncia(req, res) {
+  try {
+    const { titulo, descricao } = req.body;
+    const usuarioId = req.usuario?.id || 1; // Virá do token JWT
+    const midia = req.file ? req.file.path : null;
 
-  if (!texto) return res.status(400).json({ erro: "Texto é obrigatório" });
+    if (!titulo || !descricao) {
+      return res.status(400).json({ 
+        erro: "Título e descrição são obrigatórios" 
+      });
+    }
 
-  const denuncia = await Denuncia.create({
-    titulo,
-    descricao: texto,
-    usuarioId: req.usuario.id,
-    midia
-  });
-
-  res.status(201).json(denuncia);
-};
+    const novaDenuncia = await criarDenuncia(usuarioId, titulo, descricao, midia);
+    
+    res.status(201).json({ 
+      mensagem: "Denúncia criada com sucesso",
+      denuncia: novaDenuncia 
+    });
+  } catch (error) {
+    console.error("Erro ao criar denúncia:", error);
+    res.status(500).json({ 
+      erro: "Erro ao criar denúncia",
+      mensagem: error.message 
+    });
+  }
+}

@@ -1,6 +1,12 @@
 export default function authPolice(req, res, next) {
-    if (req.user.role !== "policia") {
-        return res.status(403).json({ erro: "Acesso restrito aos policiais" });
+    const userRole = req.user?.role || req.user?.tipo;
+    
+    if (userRole !== "policia" && userRole !== "police") {
+        return res.status(403).json({ 
+            erro: "Acesso restrito",
+            detalhes: "Apenas usuários com permissão de polícia podem acessar este recurso"
+        });
     }
+    
     next();
 }

@@ -6,11 +6,14 @@ const User = sequelize.define(
   {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
     nome: { type: DataTypes.STRING(100), allowNull: false },
-    email: { type: DataTypes.STRING(100), allowNull: false, unique: true }
+    email: { type: DataTypes.STRING(100), allowNull: false, unique: true },
+    senha: { type: DataTypes.STRING(255), allowNull: false }
   },
   {
     tableName: "users",
-    timestamps: false
+    timestamps: true,
+    createdAt: "created_at",
+    updatedAt: "updated_at"
   }
 );
 

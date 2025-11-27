@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 Teste de API - SZN</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        h1 { color: #333; margin-bottom: 30px; text-align: center; }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        h2 { color: #667eea; margin-bottom: 15px; font-size: 18px; }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        input, textarea {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        textarea { resize: vertical; }
+        button {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        button:hover { background: #764ba2; }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+        .response {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Teste de Integração API - SZN</h1>
+
+        <!-- Autenticação -->
+        <div class="section">
+            <h2>🔐 Autenticação</h2>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email" value="teste@teste.com">
+                <input type="password" id="senha" placeholder="Senha" value="123456">
+                <button onclick="testarLogin()">Login</button>
+            </div>
+            <div id="auth-response"></div>
+        </div>
+
+        <!-- Criar Denúncia -->
+        <div class="section">
+            <h2>📋 Criar Denúncia</h2>
+            <div class="form-group">
+                <input type="text" id="titulo" placeholder="Título" value="Teste de denúncia">
+                <textarea id="descricao" placeholder="Descrição">Esta é uma descrição de teste</textarea>
+                <button onclick="testarCriarDenuncia()">Criar</button>
+            </div>
+            <div id="create-response"></div>
+        </div>
+
+        <!-- Listar Denúncias -->
+        <div class="section">
+            <h2>📊 Listar Denúncias</h2>
+            <button onclick="testarListarDenuncias()" style="width: 100%;">Carregar Denúncias</button>
+            <div id="list-response"></div>
+        </div>
+
+        <!-- Buscar Denúncia -->
+        <div class="section">
+            <h2>🔍 Buscar Denúncia por ID</h2>
+            <div class="form-group">
+                <input type="number" id="denuncia-id" placeholder="ID da denúncia" value="1">
+                <button onclick="testarBuscarDenuncia()">Buscar</button>
+            </div>
+            <div id="detail-response"></div>
+        </div>
+
+        <!-- Status -->
+        <div class="section" style="border-left-color: #28a745;">
+            <h2 style="color: #28a745;">📡 Status de Conexão</h2>
+            <div id="connection-status"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        import API_CONFIG from '../SiteDenuncia/src/services/api-config.js';
+        import AuthService from '../SiteDenuncia/src/services/auth-api.js';
+        import DenunciaService from '../SiteDenuncia/src/services/denuncia-api.js';
+
+        // Expor funções globalmente
+        window.API_CONFIG = API_CONFIG;
+        window.AuthService = AuthService;
+        window.DenunciaService = DenunciaService;
+
+        // Atualizar status de conexão
+        async function atualizarStatus() {
+            try {
+                const statusDiv = document.getElementById('connection-status');
+                const endpoints = [
+                    { nome: 'Login API', url: API_CONFIG.LOGIN_API },
+                    { nome: 'Denuncia API', url: API_CONFIG.DENUNCIA_API },
+                    { nome: 'Polícia API', url: API_CONFIG.POLICIA_API }
+                ];
+
+                let html = '';
+                for (const ep of endpoints) {
+                    try {
+                        const response = await fetch(ep.url.replace('/api', ''), { method: 'GET', timeout: 2000 });
+                        const status = response.ok ? '✅ Online' : '⚠️ Respondendo com erro';
+                        html += `<p>${ep.nome}: <span class="status success">${status}</span><br><small>${ep.url}</small></p>`;
+                    } catch (e) {
+                        html += `<p>${ep.nome}: <span class="status error">❌ Offline</span><br><small>${ep.url}</small></p>`;
+                    }
+                }
+                statusDiv.innerHTML = html;
+            } catch (error) {
+                console.error('Erro ao verificar status:', error);
+            }
+        }
+
+        // Testar login
+        window.testarLogin = async function() {
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            const responseDiv = document.getElementById('auth-response');
+
+            try {
+                responseDiv.className = 'response info';
+                responseDiv.textContent = 'Tentando fazer login...';
+
+                const result = await AuthService.login(email, senha);
+                responseDiv.className = 'response success';
+                responseDiv.textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                responseDiv.className = 'response error';
+                responseDiv.textContent = `Erro: ${error.message}`;
+            }
+        };
+
+        // Testar criar denúncia
+        window.testarCriarDenuncia = async function() {
+            const titulo = document.getElementById('titulo').value;
+            const descricao = document.getElementById('descricao').value;
+            const responseDiv = document.getElementById('create-response');
+
+            try {
+                responseDiv.className = 'response info';
+                responseDiv.textContent = 'Criando denúncia...';
+
+                const result = await DenunciaService.criarDenuncia(titulo, descricao);
+                responseDiv.className = 'response success';
+                responseDiv.textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                responseDiv.className = 'response error';
+                responseDiv.textContent = `Erro: ${error.message}`;
+            }
+        };
+
+        // Testar listar denúncias
+        window.testarListarDenuncias = async function() {
+            const responseDiv = document.getElementById('list-response');
+
+            try {
+                responseDiv.className = 'response info';
+                responseDiv.textContent = 'Carregando denúncias...';
+
+                const result = await DenunciaService.listarDenuncias();
+                responseDiv.className = 'response success';
+                responseDiv.textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                responseDiv.className = 'response error';
+                responseDiv.textContent = `Erro: ${error.message}`;
+            }
+        };
+
+        // Testar buscar denúncia
+        window.testarBuscarDenuncia = async function() {
+            const id = document.getElementById('denuncia-id').value;
+            const responseDiv = document.getElementById('detail-response');
+
+            try {
+                responseDiv.className = 'response info';
+                responseDiv.textContent = 'Buscando denúncia...';
+
+                const result = await DenunciaService.buscarDenuncia(id);
+                responseDiv.className = 'response success';
+                responseDiv.textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                responseDiv.className = 'response error';
+                responseDiv.textContent = `Erro: ${error.message}`;
+            }
+        };
+
+        // Atualizar status ao carregar
+        atualizarStatus();
+        setInterval(atualizarStatus, 5000); // Atualizar a cada 5s
+    </script>
+</body>
+</html>

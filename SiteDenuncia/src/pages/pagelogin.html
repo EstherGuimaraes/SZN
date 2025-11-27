@@ -15,15 +15,6 @@
             <h2>Cidadão Seguro</h2>
             <p class="texto-login">Entre para continuar</p>
 
-            <button type="button" id="google-login" class="google-login btn">
-                <img class="google-icon" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
-                Entrar com Google
-            </button>
-
-            <div class="divider">
-                <span>ou</span>
-            </div>
-
             <form id="login-form" novalidate>
                 <div class="input-group">
                     <label for="email">E-mail</label>
@@ -50,15 +41,11 @@
 
             <p class="register-link">
                 Precisa de uma conta? 
-                <a href="#" onclick="simularCadastro(); return false;"><strong>Cadastre-se.</strong></a>
+                <a href="register.html"><strong>Cadastre-se.</strong></a>
             </p>
         </div>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-    <script src="../services/firebase-config.js"></script>
-    <script src="../services/loginauth.js"></script>
-    <script src="../services/login.js"></script>
+    <script type="module" src="../services/login.js"></script>
 </body>
 </html>

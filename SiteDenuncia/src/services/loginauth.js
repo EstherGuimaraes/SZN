@@ -1,14 +1,4 @@
-// services/auth.js
-(function() {
-  if (!window.firebaseConfig) {
-    console.error('❌ Firebase config não encontrado. Verifique firebase-config.js');
-    return;
-  }
+// ❌ Firebase removido - não é mais necessário
+// A autenticação é feita via API Backend com JWT
 
-  if (!firebase.apps.length) {
-    firebase.initializeApp(window.firebaseConfig);
-  }
-  
-  window.auth = firebase.auth();
-  window.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-})();
+console.log("✅ Módulo de autenticação carregado");
