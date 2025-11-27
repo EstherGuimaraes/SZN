@@ -1,0 +1,277 @@
+body{
+    background-color: #020617;
+}
+
+
+
+
+.menuLateral {
+    width: 20%;
+    background-color: hsl(0, 0%, 98%);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.menuHeader {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: -3px;
+    align-items: center;
+    gap: 18px;
+    padding: 18px;
+    margin-left: 10px;
+
+}
+
+.imgEscudo {
+    display: block;
+    width: 20%;
+    height: auto;
+    margin-top: 3%;
+    border-radius: 15px;
+}
+
+.menuTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 62%;
+    margin-top: 2%;
+
+}
+
+.menuLateral #titulosite {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 12px;
+    color: #020617;
+}
+
+
+.menuLateral p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    text-align: center;
+    margin-top: -7%;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.menuLinha {
+    border: none;
+    height: 1px;
+    width: 100%;
+    background: #000000;
+    margin: 12px auto;
+    margin-bottom: 20px;
+}
+
+.menuLateral h4 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #737373;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.menuLateral a {
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    color: #a6a6a6;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+.menuLateral a:hover,
+.menuLateral a.active {
+  background-color: #60a5fa;
+  color: #fff;
+}
+
+.mainPainel {
+    font-family: "Open Sans", sans-serif;
+    margin-left: 21%;
+    padding: 20px;
+    color: #fff;
+}
+
+#titulo {
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    font-size: 43px;
+    margin-bottom: 10px;
+}
+
+.subtitulo {    
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    margin-bottom: 4%;
+    color: #87909f;
+}
+
+.cards {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.cards h2{
+    color: #87909f;
+    font-size: 18px;
+}
+
+.cards h3{
+    color: #87909f;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 1%;
+}
+
+.card {
+    background-color: #0f172a;
+    padding: 2%;
+    border-radius: 20px;
+    flex: 1;
+    width: 50%;
+    border: 1px solid #3d475a;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+}
+
+.card h2,
+.card h1,
+.card h3 {
+
+    text-align: left;
+}
+
+.card h1 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 3rem; /* ajuste conforme desejar */
+    margin: 0;
+    color: #fff;
+}
+
+.imgStatus {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    width: 54px;
+    height: auto;
+    margin-bottom: 108%;
+    border-radius: 15px;
+    justify-self: end;
+    align-self: center;
+    object-fit: contain;
+}
+
+.atencao {
+    background-color: #1b0b18;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e71919;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.imgAlerta {
+    width: 3%;
+    height: auto;
+    margin-left: 1%;
+}
+
+.infoAtencao {
+    margin-left: -173%;
+}
+
+.atencao #tituloAten {
+    color: #f8716d;
+    margin-bottom: -3%;
+    font-size: 18px;
+}
+
+.atencao #AtenDescricao {
+    color: #87909f;
+    margin: 0;
+    margin-top: -1%;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.caixaDen {
+    background-color: #0f172a;
+    padding: 2%;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: 1px solid #3d475a;
+}
+
+.denuncia {
+    display: block;             
+    text-decoration: none;       
+    color: inherit;              
+    background-color: #0f172a;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #3d475a;
+    transition: transform .08s ease, box-shadow .12s ease;
+    cursor: pointer;
+}
+
+.denuncia span {
+    display: inline-block;
+    color: #87909f;
+    margin-right: 16px; 
+    vertical-align: middle;
+}
+
+@media (max-width: 480px) {
+    .denuncia span {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 6px;
+    }
+}
+
+.denuncia .denunciaHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.denunciaHeader .tituloDenuncia {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.status {
+    font-family: "Open Sans", sans-serif;
+    background-color: #16a34a;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 18px;
+    font-size: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+}
+

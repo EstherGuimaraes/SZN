@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faça seu login</title>
+    <link rel="stylesheet" href="../styles/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <img class="logo" src="../assets/EscudoPMESP.png" alt="Logo Polícia Militar">
+            <h1>Bem-vindo ao portal</h1>
+            <h2>Cidadão Seguro</h2>
+            <p class="texto-login">Entre para continuar</p>
+
+            <button type="button" id="google-login" class="google-login btn">
+                <img class="google-icon" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                Entrar com Google
+            </button>
+
+            <div class="divider">
+                <span>ou</span>
+            </div>
+
+            <form id="login-form" novalidate>
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <div class="input-icon">
+                        <img src="../assets/2.png" alt="E-mail">
+                        <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="senha">Senha</label>
+                    <div class="input-icon">
+                        <img src="../assets/3.png" alt="Senha">
+                        <input type="password" id="senha" name="senha" placeholder="••••••••" required minlength="6">
+                    </div>
+                </div>
+
+                <div id="feedback" class="feedback" style="display: none;"></div>
+
+                <button type="submit" id="login-btn" class="login-button">
+                    <span id="btn-text">Entrar</span>
+                </button>
+            </form>
+
+            <p class="register-link">
+                Precisa de uma conta? 
+                <a href="#" onclick="simularCadastro(); return false;"><strong>Cadastre-se.</strong></a>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="../services/firebase-config.js"></script>
+    <script src="../services/loginauth.js"></script>
+    <script src="../services/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/painelcontrole.css">
+    <title>Painel de Controle</title>
+
+</head>
+<body>
+  
+    <div id="menuLateral" class="menuLateral">
+
+        
+
+
+        <div class="menuHeader">
+           <img id="imgEscudo" class="imgEscudo" src="/SiteDenuncia/src/assets/4.png" alt="">
+            <div class="menuTitle">
+                <h2 id="titulosite">Sistema Policial</h2>
+                <p>Gerenciamento de Denúncias</p>
+            </div>
+        </div>
+        <hr class="menuLinha">    
+    
+        <h4>Navegação</h4>
+        <a href="painelcontrole.html">Painel de Controle</a>
+        <a href="paineldenuncias.html">Denúncias</a>
+    
+    </div>
+
+ 
+   
+
+    <main id="mainPainel" class="mainPainel">
+        
+        <h1 id="titulo">Painel de Controle</h1>
+        <h3 class="subtitulo" id="subtitulo">Visão geral do sistema de denúncias</h3>
+        
+        
+        <div id="cards" class="cards">
+            <div id="card" class="card">
+                <div id="infoCard" class="infoCard">
+                    <h2 id="tituloDen">Denúncias Novas</h2>
+               
+                    <h1 id="qtd">1</h1><br>
+                    <h3 id="">Aguardando análise</h3>
+                </div>
+
+                <div id="imgCard">
+                    <img class="imgStatus" id="imgStatus" src="/SiteDenuncia/src/assets/5.png" alt="">
+                </div>
+            </div>
+
+            <div id="card" class="card">
+                <div id="infoCard" class="infoCard">
+                    <h2 id="tituloDen">Em Análise</h2>
+               
+                    <h1 id="qtd">1</h1><br>
+                    <h3 id="">Sendo avaliadas</h3>
+                </div>
+
+                <div id="imgCard">
+                    <img class="imgStatus" id="imgStatus" src="/SiteDenuncia/src/assets/6.png" alt="">
+                </div>
+            </div>
+
+           <div id="card" class="card">
+                <div id="infoCard" class="infoCard">
+                    <h2 id="tituloDen">Investigando</h2>
+               
+                    <h1 id="qtd">1</h1><br>
+                    <h3 id="">Em andamento</h3>
+                </div>
+
+                <div id="imgCard">
+                    <img class="imgStatus" id="imgStatus" src="/SiteDenuncia/src/assets/7.png" alt="">
+                </div>
+            </div>
+
+            <div id="card" class="card">
+                <div id="infoCard" class="infoCard">
+                    <h2 id="tituloDen">Resolvidas</h2>
+               
+                    <h1 id="qtd">1</h1><br>
+                    <h3 id="">Casos finalizados</h3>
+                </div>
+
+                <div id="imgCard">
+                    <img class="imgStatus" id="imgStatus" src="/SiteDenuncia/src/assets/8.png" alt="">
+                </div>
+            </div>
+    </div>
+    
+    <div id="atencao" class="atencao">
+
+        <div id="imgAtencao" class="imgAtencao">
+            <img class="imgAlerta" id="imgAlerta" src="/SiteDenuncia/src/assets/15.png" alt="">
+        </div>
+
+        <div class="infoAtencao" id="infoAtencao">
+            <h2 id="tituloAten">Atenção: 3 denúncia(s) urgente(s)</h2><br>
+            <h3 id="AtenDescricao">Requer ação imediata</h3>
+        </div>
+    </div>
+
+     <div id="caixaDen" class="caixaDen">
+        <h1>Denúncias Recentes</h1>
+        <a href="detalhedenuncias.html" id="denuncia" class="denuncia">
+            <div class="denunciaHeader">
+                <h2 id="tituloDenuncia" class="tituloDenuncia">Denúncia 1</h2>
+                <button id="status" class="status">Resolvida</button>
+            </div>
+            <h3 id="descricaoDenuncia">
+                Vizinha relatou gritos de socorro e sons de agressão vindos do apartamento 302. Já é a terceira vez este mês que episódios similares ocorrem.
+            </h3>
+            <span id="dataDenuncia"><strong>Data:</strong> 15/12/2025</span>
+            <span id="localDenuncia"><strong>Local:</strong> São Paulo - SP</span>
+            <span id="tipoCrime"><strong>Crime:</strong> Agressão física</span>
+        </a>
+    </div>
+</main>
+<script  src="../services/painelcontrole.js"></script>
+</body>
+</html>
