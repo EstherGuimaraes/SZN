@@ -1,13 +1,13 @@
-import { Router } from "express";
-import {
+const express = require("express");
+const router = express.Router();
+
+const {
   listarUsuarios,
   buscarUsuario,
   criarUsuario,
   atualizarUsuario,
-  excluirUsuario
-} from "../controllers/userController.js";
-
-const router = Router();
+  excluirUsuario,
+} = require("../controllers/userController");
 
 router.get("/", listarUsuarios);
 router.get("/:id", buscarUsuario);
@@ -15,4 +15,4 @@ router.post("/", criarUsuario);
 router.put("/:id", atualizarUsuario);
 router.delete("/:id", excluirUsuario);
 
-export default router;
+module.exports = router;
