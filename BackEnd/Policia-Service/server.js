@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import policiaRoutes from "./src/routes/policia.routes.js";
-import validateToken from "./src/middlewares/validateToken.js"; // CORRIGIDO
+import validateToken from "./src/middlewares/validateToken.js"; 
 import { db } from "./src/config/db.js";
 
 const app = express();

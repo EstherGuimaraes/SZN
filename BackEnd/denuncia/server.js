@@ -1,6 +1,6 @@
 import express from "express";
-import denunciaRoutes from "./routes/denuncia.routes.js";
-import { criarTabela } from "./config/init.js";
+import { criarTabela } from "./src/config/db.js";
+import denunciaRoutes from "./src/routes/denuncia1.js";
 
 const app = express();
 app.use(express.json());
