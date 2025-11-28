@@ -8,6 +8,18 @@
     <style>
       /* Minimal inline styles to ensure layout if CSS missing */
       .container { max-width: 1100px; margin: 20px auto; padding: 16px; }
+
+      /* Modal overlay + animation */
+      .modal-overlay {
+        position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+        background: rgba(0,0,0,0.5);
+        opacity: 0; pointer-events: none; transition: opacity 180ms ease;
+      }
+
+      .modal-overlay .modal-content { transform: translateY(-8px); transition: transform 180ms ease, opacity 180ms ease; opacity:0; }
+
+      .modal-overlay.open { opacity: 1; pointer-events: auto; }
+      .modal-overlay.open .modal-content { transform: translateY(0); opacity:1; }
     </style>
 </head>
 <body>
@@ -31,8 +43,8 @@
   </div>
 
   <!-- Modal para nova denúncia -->
-  <div id="modal-nova-denuncia" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; z-index:1000;">
-    <div style="background:white; padding:20px; border-radius:6px; max-width:520px; width:90%;">
+  <div id="modal-nova-denuncia" class="modal-overlay">
+    <div class="modal-content" style="background:white; padding:20px; border-radius:6px; max-width:520px; width:90%;">
       <h2>Nova Denúncia</h2>
       <form id="form-nova-denuncia">
         <div style="margin:10px 0;"><label for="novo-titulo">Título</label><input id="novo-titulo" required style="width:100%"></div>
@@ -63,11 +75,21 @@
     const btnCancelar = document.getElementById('btn-cancelar-modal');
     const formNova = document.getElementById('form-nova-denuncia');
 
-    btnNova.addEventListener('click', () => modal.style.display = 'flex');
-    btnCancelar.addEventListener('click', () => modal.style.display = 'none');
+    const openModal = () => modal.classList.add('open');
+    const closeModal = () => modal.classList.remove('open');
+
+    btnNova.addEventListener('click', openModal);
+    btnCancelar.addEventListener('click', closeModal);
 
     // Fechar modal clicando no overlay
-    modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    // Fechar modal com a tecla Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+      }
+    });
 
     // Logout
     document.getElementById('btn-logout').addEventListener('click', () => {
@@ -76,8 +98,12 @@
       }
     });
 
-    // Form submit delega para handler
-    formNova.addEventListener('submit', Handler.criarDenuncia);
+    // Form submit delega para handler e fecha modal ao finalizar
+    formNova.addEventListener('submit', async (e) => {
+      await Handler.criarDenuncia(e);
+      // fechar modal após criação (Handler pode não fechar a UI)
+      closeModal();
+    });
 
     // Carregar denúncias via handler
     document.addEventListener('DOMContentLoaded', () => {
