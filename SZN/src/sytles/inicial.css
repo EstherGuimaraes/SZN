@@ -41,6 +41,10 @@ body {
 .botao-barra {
     border: none;
     background-color: transparent;
+    padding: 6px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .barra:hover {
@@ -48,15 +52,19 @@ body {
 }
 
 .barraImg {
-    width: 80px;
+    width: 40px;
+    height: auto;
+    display: block;
 }
 
 .icone {
     display: flex;
-    justify-content: left;
-    width: 30px;
+    justify-content: flex-end;
+    gap: 10px;
+    width: auto;
+    align-items: center;
     margin-top: -5%;
-    margin-right: 70px;
+    margin-right: 20px;
 }
 
 .carrossel{
