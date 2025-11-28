@@ -23,11 +23,9 @@ const upload = multer({
 
 // Rotas
 router.get("/", listarDenuncias);
-router.get("/:id", detalheDenuncia);
 router.post("/", verificarToken, upload.single("midia"), criarNovaDenuncia);
-// rota pública
+// Rota pública para criação sem token (ex: checkout ou relatórios anônimos) - ANTES de /:id
 router.post("/public", upload.single("midia"), criarNovaDenunciaPublic);
-// Rota pública para criação sem token (ex: checkout ou relatórios anônimos)
-router.post("/public", upload.single("midia"), criarNovaDenuncia);
+router.get("/:id", detalheDenuncia);
 
 export default router;
