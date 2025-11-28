@@ -1,7 +1,7 @@
 import { Router } from "express";
 import multer from "multer";
 import { verificarToken } from "../middlewares/verificarToken.js";
-import { listarDenuncias, detalheDenuncia, criarNovaDenuncia } from "../controllers/denuncia.controller.js";
+import { listarDenuncias, detalheDenuncia, criarNovaDenuncia, criarNovaDenunciaPublic } from "../controllers/denuncia.controller.js";
 
 const router = Router();
 
@@ -25,5 +25,9 @@ const upload = multer({
 router.get("/", listarDenuncias);
 router.get("/:id", detalheDenuncia);
 router.post("/", verificarToken, upload.single("midia"), criarNovaDenuncia);
+// rota pública
+router.post("/public", upload.single("midia"), criarNovaDenunciaPublic);
+// Rota pública para criação sem token (ex: checkout ou relatórios anônimos)
+router.post("/public", upload.single("midia"), criarNovaDenuncia);
 
 export default router;

@@ -63,3 +63,30 @@ export async function criarNovaDenuncia(req, res) {
     });
   }
 }
+
+// Mesma lógica para criação pública (sem token)
+export async function criarNovaDenunciaPublic(req, res) {
+  try {
+    const { titulo, descricao } = req.body;
+    const usuarioId = 0; // Público
+    const midia = req.file ? req.file.path : null;
+
+    if (!titulo || !descricao) {
+      return res.status(400).json({ 
+        erro: "Título e descrição são obrigatórios" 
+      });
+    }
+
+    const novaDenuncia = await criarDenuncia(usuarioId, titulo, descricao, midia);
+    res.status(201).json({ 
+      mensagem: "Denúncia criada com sucesso (pública)",
+      denuncia: novaDenuncia 
+    });
+  } catch (error) {
+    console.error("Erro ao criar denúncia pública:", error);
+    res.status(500).json({ 
+      erro: "Erro ao criar denúncia pública",
+      mensagem: error.message 
+    });
+  }
+}
