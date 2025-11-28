@@ -35,6 +35,46 @@ function coletarDadosPagamento() {
   };
 }
 
+// Validação do formulário de pagamento
+function validarDadosPagamento(dados) {
+  const errors = [];
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // limpar estilos anteriores
+  ['pag-email','pag-nome','pag-telefone','pag-endereco','pag-cep'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.style.borderColor = '';
+      const prev = el.parentElement?.querySelector('.field-error');
+      if (prev) prev.remove();
+    }
+  });
+
+  if (!dados.email || !emailRe.test(dados.email)) {
+    errors.push({ field: 'pag-email', message: 'E-mail inválido ou obrigatório.' });
+  }
+
+  if (!dados.nome || dados.nome.trim().length < 2) {
+    errors.push({ field: 'pag-nome', message: 'Nome deve ter ao menos 2 caracteres.' });
+  }
+
+  const telefoneNums = (dados.telefone || '').replace(/\D/g, '');
+  if (!telefoneNums || telefoneNums.length < 8) {
+    errors.push({ field: 'pag-telefone', message: 'Telefone inválido ou obrigatório.' });
+  }
+
+  if (!dados.endereco || dados.endereco.trim().length < 5) {
+    errors.push({ field: 'pag-endereco', message: 'Endereço inválido ou obrigatório.' });
+  }
+
+  const cepNums = (dados.cep || '').replace(/\D/g, '');
+  if (!cepNums || cepNums.length < 5) {
+    errors.push({ field: 'pag-cep', message: 'CEP inválido ou obrigatório.' });
+  }
+
+  return { valid: errors.length === 0, errors };
+}
+
 // Envia os dados para o endpoint de denúncias (SiteDenuncia)
 async function enviarParaDenunciaAPI(paymentMethod) {
   const dados = coletarDadosPagamento();
@@ -92,6 +132,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function handler(e, method) {
     e.preventDefault();
+    const dados = coletarDadosPagamento();
+    const valid = validarDadosPagamento(dados);
+    if (!valid.valid) {
+      valid.errors.forEach(err => {
+        const el = document.getElementById(err.field);
+        if (el) {
+          el.style.borderColor = '#ef5350';
+          const small = document.createElement('div');
+          small.className = 'field-error';
+          small.style.color = '#c62828';
+          small.style.fontSize = '12px';
+          small.textContent = err.message;
+          el.parentElement.appendChild(small);
+        }
+      });
+      const first = document.getElementById(valid.errors[0].field);
+      if (first) first.focus();
+      alert('Preencha corretamente os campos obrigatórios.');
+      return;
+    }
+
     try {
       const res = await enviarParaDenunciaAPI(method);
       alert('Pagamento registrado e dados enviados como denúncia. ID: ' + (res.id || res.insertId || '—'));
