@@ -43,7 +43,8 @@ async function enviarParaDenunciaAPI(paymentMethod) {
   const descricao = JSON.stringify({ contato: dados.email, endereco: dados.endereco, telefone: dados.telefone, descricao: dados.descricao, carrinho: dados.carrinho, total: totalEl?.textContent || '' });
 
   // URL base da API de denúncias (ajuste se seu backend estiver em outra porta)
-  const DENUNCIA_API = 'http://localhost:3002/api/denuncias';
+  const DENUNCIA_API_BASE = 'http://localhost:3002/api/denuncias';
+  const PUBLIC_ENDPOINT = DENUNCIA_API_BASE + '/public';
 
   try {
     const token = localStorage.getItem('auth_token');
@@ -56,18 +57,27 @@ async function enviarParaDenunciaAPI(paymentMethod) {
     const headers = {};
     if (token) headers['Authorization'] = `Bearer ${token}`;
 
-    const res = await fetch(DENUNCIA_API, {
-      method: 'POST',
-      headers,
-      body: formData
-    });
+    // Tenta enviar com token (se existir). Se receber 401/403, tentar rota pública.
+    const trySend = async (url, hdrs) => {
+      const response = await fetch(url, { method: 'POST', headers: hdrs, body: formData });
+      return response;
+    };
 
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.erro || `Erro ${res.status}`);
+    // 1) Tentar envio para endpoint principal
+    let response = await trySend(DENUNCIA_API_BASE, headers);
+
+    // Se sem token or não autorizado, tentar rota pública
+    if (!response.ok && (response.status === 401 || response.status === 403)) {
+      // tentar rota pública (sem Authorization)
+      response = await trySend(PUBLIC_ENDPOINT, {});
     }
 
-    const result = await res.json();
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}));
+      throw new Error(err.erro || `Erro ${response.status}`);
+    }
+
+    const result = await response.json();
     return result;
   } catch (err) {
     throw err;
