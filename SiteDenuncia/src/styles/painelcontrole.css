@@ -1,9 +1,7 @@
-body{
+body {
     background-color: #020617;
+    overflow-x: hidden;
 }
-
-
-
 
 .menuLateral {
     width: 20%;
@@ -42,7 +40,6 @@ body{
     justify-content: center;
     width: 62%;
     margin-top: 2%;
-
 }
 
 .menuLateral #titulosite {
@@ -53,7 +50,6 @@ body{
     margin-bottom: 12px;
     color: #020617;
 }
-
 
 .menuLateral p {
     font-family: "Open Sans", sans-serif;
@@ -95,8 +91,8 @@ body{
 
 .menuLateral a:hover,
 .menuLateral a.active {
-  background-color: #60a5fa;
-  color: #fff;
+    background-color: #60a5fa;
+    color: #fff;
 }
 
 .mainPainel {
@@ -113,7 +109,7 @@ body{
     margin-bottom: 10px;
 }
 
-.subtitulo {    
+.subtitulo {
     font-family: "Open Sans", sans-serif;
     font-weight: bold;
     margin-bottom: 4%;
@@ -126,12 +122,12 @@ body{
     margin-top: 20px;
 }
 
-.cards h2{
+.cards h2 {
     color: #87909f;
     font-size: 18px;
 }
 
-.cards h3{
+.cards h3 {
     color: #87909f;
     font-size: 16px;
     font-weight: 400;
@@ -160,7 +156,8 @@ body{
 
 .card h1 {
     font-family: "Open Sans", sans-serif;
-    font-size: 3rem; /* ajuste conforme desejar */
+    font-size: 3rem;
+    /* ajuste conforme desejar */
     margin: 0;
     color: #fff;
 }
@@ -186,7 +183,6 @@ body{
     display: flex;
     flex-direction: row;
     align-items: center;
-    
 }
 
 .imgAlerta {
@@ -205,8 +201,6 @@ body{
     font-size: 18px;
 }
 
-
-
 .atencao #AtenDescricao {
     color: #87909f;
     margin: 0;
@@ -224,9 +218,9 @@ body{
 }
 
 .denuncia {
-    display: block;             
-    text-decoration: none;       
-    color: inherit;              
+    display: block;
+    text-decoration: none;
+    color: inherit;
     background-color: #0f172a;
     padding: 16px;
     border-radius: 12px;
@@ -238,7 +232,7 @@ body{
 .denuncia span {
     display: inline-block;
     color: #87909f;
-    margin-right: 16px; 
+    margin-right: 16px;
     vertical-align: middle;
 }
 

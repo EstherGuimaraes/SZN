@@ -66,9 +66,8 @@ header {
 .icone {
     display: flex;
     justify-content: left;
-    width: 30px;
     margin-top: -5%;
-    margin-right: 70px;
+    margin-left: -20%;
 }
 .cart-container {
   width: 78%;
