@@ -6,334 +6,85 @@
     <title>Painel de Denúncias</title>
     <link rel="stylesheet" href="../styles/paineldenuncias.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #f5f5f5; }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        header h1 { color: #333; }
-        
-        .btn-group {
-            display: flex;
-            gap: 10px;
-        }
-        
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        
-        .btn-nova {
-            background: #667eea;
-            color: white;
-        }
-        
-        .btn-nova:hover {
-            background: #764ba2;
-        }
-        
-        .btn-logout {
-            background: #ef5350;
-            color: white;
-        }
-        
-        .btn-logout:hover {
-            background: #c62828;
-        }
-        
-        .denuncias-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .denuncia-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-        
-        .denuncia-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        
-        .denuncia-card h3 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-        
-        .denuncia-card p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-        
-        .status-badge {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .status-badge.pendente {
-            background: #fff3cd;
-            color: #856404;
-        }
-        
-        .status-badge.investigando {
-            background: #d1ecf1;
-            color: #0c5460;
-        }
-        
-        .status-badge.concluida {
-            background: #d4edda;
-            color: #155724;
-        }
-        
-        .denuncia-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .denuncia-actions button {
-            flex: 1;
-            padding: 8px;
-            font-size: 12px;
-        }
-        
-        .btn-view {
-            background: #667eea;
-            color: white;
-        }
-        
-        .btn-delete {
-            background: #ef5350;
-            color: white;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #667eea;
-        }
-        
-        .empty-state {
-            text-align: center;
-            padding: 40px;
-            color: #999;
-        }
-        
-        .error-message {
-            background: #ffebee;
-            color: #c62828;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        
-        .success-message {
-            background: #e8f5e9;
-            color: #2e7d32;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        
-        .user-info {
-            text-align: right;
-            color: #666;
-            font-size: 14px;
-        }
+      /* Minimal inline styles to ensure layout if CSS missing */
+      .container { max-width: 1100px; margin: 20px auto; padding: 16px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div>
-                <h1>📋 Painel de Denúncias</h1>
-                <p class="user-info">Bem-vindo, <span id="user-name">Usuário</span>!</p>
-            </div>
-            <div class="btn-group">
-                <button class="btn-nova" id="btn-nova-denuncia">➕ Nova Denúncia</button>
-                <button class="btn-logout" id="btn-logout">🚪 Sair</button>
-            </div>
-        </header>
+  <div class="container">
+    <header>
+      <div>
+        <h1>📋 Painel de Denúncias</h1>
+        <p class="user-info">Bem-vindo, <span id="user-name">Usuário</span>!</p>
+      </div>
+      <div class="btn-group">
+        <button class="btn-nova" id="btn-nova-denuncia">➕ Nova Denúncia</button>
+        <button class="btn-logout" id="btn-logout">🚪 Sair</button>
+      </div>
+    </header>
 
-        <div id="message-container"></div>
+    <div id="message-container"></div>
 
-        <div id="denuncias-container" class="denuncias-container">
-            <div class="loading">⏳ Carregando denúncias...</div>
-        </div>
+    <div id="denuncias-container" class="denuncias-container">
+      <div class="loading">⏳ Carregando denúncias...</div>
     </div>
+  </div>
 
-    <!-- Modal para nova denúncia -->
-    <div id="modal-nova-denuncia" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000;">
-        <div style="background: white; padding: 30px; border-radius: 8px; max-width: 500px; width: 90%;">
-            <h2>Nova Denúncia</h2>
-            <form id="form-nova-denuncia">
-                <div style="margin: 15px 0;">
-                    <label for="novo-titulo">Título</label>
-                    <input type="text" id="novo-titulo" placeholder="Resumo da denúncia" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                </div>
-                <div style="margin: 15px 0;">
-                    <label for="novo-descricao">Descrição</label>
-                    <textarea id="novo-descricao" placeholder="Descreva a situação em detalhes" rows="4" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
-                </div>
-                <div style="margin: 15px 0;">
-                    <label for="novo-midia">Foto/Vídeo (opcional)</label>
-                    <input type="file" id="novo-midia" accept="image/*,video/*" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                </div>
-                <div style="display: flex; gap: 10px; margin-top: 20px;">
-                    <button type="submit" style="flex: 1; background: #667eea; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Enviar</button>
-                    <button type="button" id="btn-cancelar-modal" style="flex: 1; background: #999; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Cancelar</button>
-                </div>
-            </form>
+  <!-- Modal para nova denúncia -->
+  <div id="modal-nova-denuncia" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; z-index:1000;">
+    <div style="background:white; padding:20px; border-radius:6px; max-width:520px; width:90%;">
+      <h2>Nova Denúncia</h2>
+      <form id="form-nova-denuncia">
+        <div style="margin:10px 0;"><label for="novo-titulo">Título</label><input id="novo-titulo" required style="width:100%"></div>
+        <div style="margin:10px 0;"><label for="novo-descricao">Descrição</label><textarea id="novo-descricao" rows="4" required style="width:100%"></textarea></div>
+        <div style="display:flex; gap:8px; margin-top:12px;">
+          <button type="submit" style="flex:1; background:#667eea; color:#fff; border:none; padding:10px;">Enviar</button>
+          <button type="button" id="btn-cancelar-modal" style="flex:1; background:#999; color:#fff; border:none; padding:10px;">Cancelar</button>
         </div>
+      </form>
     </div>
+  </div>
 
-    <script type="module" src="../services/denuncias-handler.js"></script>
-    <script type="module">
-        import DenunciaService from '../services/denuncia-api.js';
-        import AuthService from '../services/auth-api.js';
+  <script type="module">
+    import * as Handler from '../services/denuncias-handler.js';
+    import AuthService from '../services/auth-api.js';
 
-        // Verificar autenticação
-        if (!AuthService.isAuthenticated()) {
-            window.location.href = 'pagelogin.html';
-        }
+    // Verificar autenticação
+    if (!AuthService.isAuthenticated()) {
+      window.location.href = 'pagelogin.html';
+    }
 
-        const user = AuthService.getCurrentUser();
-        if (user) {
-            document.getElementById('user-name').textContent = user.nome || user.email;
-        }
+    const user = AuthService.getCurrentUser();
+    if (user) document.getElementById('user-name').textContent = user.nome || user.email;
 
-        // Logout
-        document.getElementById('btn-logout').addEventListener('click', () => {
-            if (confirm('Tem certeza que deseja sair?')) {
-                AuthService.logout();
-                window.location.href = 'pagelogin.html';
-            }
-        });
+    // Elements
+    const modal = document.getElementById('modal-nova-denuncia');
+    const btnNova = document.getElementById('btn-nova-denuncia');
+    const btnCancelar = document.getElementById('btn-cancelar-modal');
+    const formNova = document.getElementById('form-nova-denuncia');
 
-        // Modal nova denúncia
-        const modal = document.getElementById('modal-nova-denuncia');
-        const btnNova = document.getElementById('btn-nova-denuncia');
-        const btnCancelar = document.getElementById('btn-cancelar-modal');
-        const formNova = document.getElementById('form-nova-denuncia');
+    btnNova.addEventListener('click', () => modal.style.display = 'flex');
+    btnCancelar.addEventListener('click', () => modal.style.display = 'none');
 
-        btnNova.addEventListener('click', () => {
-            modal.style.display = 'flex';
-        });
+    // Fechar modal clicando no overlay
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
 
-        btnCancelar.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
+    // Logout
+    document.getElementById('btn-logout').addEventListener('click', () => {
+      if (confirm('Tem certeza que deseja sair?')) {
+        Handler.logout();
+      }
+    });
 
-        // Fechar modal ao clicar fora dele (no overlay)
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
+    // Form submit delega para handler
+    formNova.addEventListener('submit', Handler.criarDenuncia);
 
-        formNova.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const titulo = document.getElementById('novo-titulo').value;
-            const descricao = document.getElementById('novo-descricao').value;
-            const midiaInput = document.getElementById('novo-midia');
-            const midia = midiaInput.files[0] || null;
-
-            try {
-                const btn = formNova.querySelector('button[type="submit"]');
-                btn.disabled = true;
-                btn.textContent = 'Enviando...';
-
-                await DenunciaService.criarDenuncia(titulo, descricao, midia);
-                
-                showMessage('✅ Denúncia criada com sucesso!', 'success');
-                modal.style.display = 'none';
-                formNova.reset();
-                
-                // Recarregar denúncias
-                setTimeout(() => location.reload(), 1500);
-            } catch (error) {
-                showMessage('❌ Erro ao criar denúncia: ' + error.message, 'error');
-            } finally {
-                const btn = formNova.querySelector('button[type="submit"]');
-                btn.disabled = false;
-                btn.textContent = 'Enviar';
-            }
-        });
-
-        // Mostrar mensagens
-        function showMessage(text, type) {
-            const container = document.getElementById('message-container');
-            const div = document.createElement('div');
-            div.className = `${type}-message`;
-            div.textContent = text;
-            container.innerHTML = '';
-            container.appendChild(div);
-            setTimeout(() => div.remove(), 4000);
-        }
-
-        // Carregar denúncias
-        async function carregarDenuncias() {
-            try {
-                const data = await DenunciaService.listarDenuncias();
-                const denuncias = data.denuncias || data;
-                const container = document.getElementById('denuncias-container');
-
-                if (!denuncias || denuncias.length === 0) {
-                    container.innerHTML = '<div class="empty-state">Nenhuma denúncia registrada ainda.</div>';
-                    return;
-                }
-
-                container.innerHTML = denuncias.map(d => `
-                    <div class="denuncia-card">
-                        <h3>${d.titulo || 'Sem título'}</h3>
-                        <span class="status-badge ${d.status || 'pendente'}">${(d.status || 'pendente').toUpperCase()}</span>
-                        <p>${d.descricao.substring(0, 100)}...</p>
-                        <small style="color: #999;">ID: ${d.id}</small>
-                        <div class="denuncia-actions">
-                            <button class="btn-view" onclick="window.location.href = 'detalhedenuncias.html?id=${d.id}'">Ver Detalhes</button>
-                        </div>
-                    </div>
-                `).join('');
-            } catch (error) {
-                const container = document.getElementById('denuncias-container');
-                container.innerHTML = `<div class="error-message">❌ Erro ao carregar denúncias: ${error.message}</div>`;
-            }
-        }
-
-        carregarDenuncias();
-        window.carregarDenuncias = carregarDenuncias;
-    </script>
+    // Carregar denúncias via handler
+    document.addEventListener('DOMContentLoaded', () => {
+      if (document.getElementById('denuncias-container')) {
+        Handler.carregarDenuncias();
+      }
+    });
+  </script>
 </body>
 </html>

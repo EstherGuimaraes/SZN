@@ -2,13 +2,13 @@ import AuthService from './auth-api.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("register-form");
-    
+
     // Link para voltar para login
-    const returnLink = document.querySelector(".return-link a");
+    const returnLink = document.querySelector('.return-link a');
     if (returnLink) {
-        returnLink.addEventListener("click", (e) => {
+        returnLink.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = "pagelogin.html";
+            window.location.href = 'pagelogin.html';
         });
     }
 
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.classList.remove("invalido");
             }
         });
-
+    });
         // Permitir Enter no campo de senha para enviar o formulário
         if (input.type === 'password' || input.id === 'senha') {
             input.addEventListener('keypress', (e) => {
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         }
-    });
+
 
     // Submeter formulário
     form.addEventListener("submit", async (e) => {

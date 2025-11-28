@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnText = document.getElementById('btn-text');
   const feedbackDiv = document.getElementById('feedback');
   
-  // Link para criar conta
-  const registerLink = document.querySelector(".register-link a");
+  // Link para criar conta (melhora de navegação)
+  const registerLink = document.querySelector('.register-link a');
   if (registerLink) {
-    registerLink.addEventListener("click", (e) => {
+    registerLink.addEventListener('click', (e) => {
       e.preventDefault();
-      window.location.href = "register.html";
+      window.location.href = 'register.html';
     });
   }
 
@@ -25,33 +25,31 @@ document.addEventListener('DOMContentLoaded', () => {
     loginBtn.disabled = false;
     btnText.textContent = 'Entrar';
   };
-
-  // Validação em tempo real do email
+  // Validação em tempo real do email e suporte Enter na senha
   const emailInput = document.getElementById('email');
   if (emailInput) {
     emailInput.addEventListener('blur', () => {
       const email = emailInput.value.trim();
       const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      
       if (email && !isValidEmail) {
         emailInput.style.borderColor = '#ef5350';
         emailInput.title = 'E-mail inválido';
       } else {
-        emailInput.style.borderColor = '#ddd';
+        emailInput.style.borderColor = '';
         emailInput.title = '';
       }
     });
 
     emailInput.addEventListener('focus', () => {
-      emailInput.style.borderColor = '#667eea';
+      emailInput.style.borderColor = '';
     });
   }
 
-  // Permitir envio com Enter na senha
   const senhaInput = document.getElementById('senha');
   if (senhaInput) {
-    senhaInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
+    senhaInput.addEventListener('keypress', (ev) => {
+      if (ev.key === 'Enter') {
+        ev.preventDefault();
         loginForm.dispatchEvent(new Event('submit'));
       }
     });
