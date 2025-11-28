@@ -80,46 +80,66 @@ async function enviarParaDenunciaAPI(paymentMethod) {
   const dados = coletarDadosPagamento();
 
   const titulo = `Pedido - ${dados.nome} ${dados.sobrenome} - ${paymentMethod}`;
-  const descricao = JSON.stringify({ contato: dados.email, endereco: dados.endereco, telefone: dados.telefone, descricao: dados.descricao, carrinho: dados.carrinho, total: totalEl?.textContent || '' });
+  const descricao = JSON.stringify({ 
+    contato: dados.email, 
+    endereco: dados.endereco, 
+    telefone: dados.telefone, 
+    descricao: dados.descricao, 
+    carrinho: dados.carrinho, 
+    total: totalEl?.textContent || '',
+    paymentMethod: paymentMethod,
+    modeloEntrega: dados.modeloEntrega,
+    pais: dados.pais,
+    cep: dados.cep
+  });
 
-  // URL base da API de denúncias (ajuste se seu backend estiver em outra porta)
   const DENUNCIA_API_BASE = 'http://localhost:3002/api/denuncias';
   const PUBLIC_ENDPOINT = DENUNCIA_API_BASE + '/public';
 
   try {
     const token = localStorage.getItem('auth_token');
+    const payload = { titulo, descricao };
 
-    const formData = new FormData();
-    formData.append('titulo', titulo);
-    formData.append('descricao', descricao);
-    formData.append('meta', JSON.stringify({ paymentMethod: paymentMethod, modeloEntrega: dados.modeloEntrega, pais: dados.pais, cep: dados.cep }));
+    const trySend = async (url, hdrs) => {
+      console.log('📤 Enviando para:', url);
+      console.log('Payload:', payload);
+      const response = await fetch(url, { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json', ...hdrs }, 
+        body: JSON.stringify(payload) 
+      });
+      console.log('📥 Resposta status:', response.status);
+      return response;
+    };
 
     const headers = {};
     if (token) headers['Authorization'] = `Bearer ${token}`;
 
-    // Tenta enviar com token (se existir). Se receber 401/403, tentar rota pública.
-    const trySend = async (url, hdrs) => {
-      const response = await fetch(url, { method: 'POST', headers: hdrs, body: formData });
-      return response;
-    };
-
     // 1) Tentar envio para endpoint principal
     let response = await trySend(DENUNCIA_API_BASE, headers);
 
-    // Se sem token or não autorizado, tentar rota pública
+    // Se sem token ou não autorizado, tentar rota pública
     if (!response.ok && (response.status === 401 || response.status === 403)) {
-      // tentar rota pública (sem Authorization)
+      console.log('⚠️ Tentando rota pública...');
       response = await trySend(PUBLIC_ENDPOINT, {});
     }
 
     if (!response.ok) {
-      const err = await response.json().catch(() => ({}));
-      throw new Error(err.erro || `Erro ${response.status}`);
+      const errText = await response.text();
+      console.error('❌ Erro resposta:', errText);
+      try {
+        const err = JSON.parse(errText);
+        throw new Error(err.erro || err.mensagem || `Erro ${response.status}`);
+      } catch {
+        throw new Error(`Erro ${response.status}: ${errText}`);
+      }
     }
 
     const result = await response.json();
+    console.log('✅ Sucesso:', result);
     return result;
   } catch (err) {
+    console.error('❌ Erro geral:', err);
     throw err;
   }
 }
